@@ -24,10 +24,12 @@
   <!-- See here for more information about this section: https://forums.civfanatics.com/threads/file-attributes-properties-is-that-vfs-ingameuiaddin-or-updatedatabase.487846/ -->
   <Files>
     <File md5="2017b31894cc1b4470304d230033e173" import="0">SQL/Civilization_DisableTechs.sql</File>
+    <File md5="530a1b22a245e34ece39f68c2c9899e7" import="0">SQL/Civilizations.sql</File>
   </Files>
   <Actions>
     <OnModActivated>
       <UpdateDatabase>SQL/Civilization_DisableTechs.sql</UpdateDatabase>
+      <UpdateDatabase>SQL/Civilizations.sql</UpdateDatabase>
     </OnModActivated>
   </Actions>
   <EntryPoints>
