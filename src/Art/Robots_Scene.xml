@@ -1,0 +1,17 @@
+<LeaderScene>
+  <FallbackImage ID="Level1" image="Robots_Scene.dds" />
+  <FallbackImage ID="Level2_Purity" image="Robots_Scene.dds" />
+  <FallbackImage ID="Level2_Harmony" image="Robots_Scene.dds" />
+  <FallbackImage ID="Level2_Supremacy" image="Robots_Scene.dds" />
+  <FallbackImage ID="Level3_Purity" image="Robots_Scene.dds" />
+  <FallbackImage ID="Level3_Harmony" image="Robots_Scene.dds" />
+  <FallbackImage ID="Level3_Supremacy" image="Robots_Scene.dds" />
+
+  <Environment ID="Level1" XML="Robots_Environment.xml" />
+  <Environment ID="Level2_Purity" XML="Robots_Environment.xml" />
+  <Environment ID="Level2_Harmony" XML="Robots_Environment.xml" />
+  <Environment ID="Level2_Supremacy" XML="Robots_Environment.xml" />
+  <Environment ID="Level3_Purity" XML="Robots_Environment.xml" />
+  <Environment ID="Level3_Harmony" XML="Robots_Environment.xml" />
+  <Environment ID="Level3_Supremacy" XML="Robots_Environment.xml" />
+</LeaderScene>

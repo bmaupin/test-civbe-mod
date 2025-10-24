@@ -23,8 +23,11 @@
   <Blocks />
   <!-- See here for more information about this section: https://forums.civfanatics.com/threads/file-attributes-properties-is-that-vfs-ingameuiaddin-or-updatedatabase.487846/ -->
   <Files>
+    <File md5="5e17f80ae4dd3842d73010bfc5358f4e" import="1">Art/Robots_Environment.xml</File>
+    <File md5="181f1dbcd40ea1db4e6e372b2215c333" import="1">Art/Robots_Scene.dds</File>
+    <File md5="dcc6dc20d5526a346ee1c435775c76ae" import="1">Art/Robots_Scene.xml</File>
     <File md5="2017b31894cc1b4470304d230033e173" import="0">SQL/Civilization_DisableTechs.sql</File>
-    <File md5="530a1b22a245e34ece39f68c2c9899e7" import="0">SQL/Civilizations.sql</File>
+    <File md5="e9404dda0e75dafdaf66ed522357cc4d" import="0">SQL/Civilizations.sql</File>
   </Files>
   <Actions>
     <OnModActivated>
