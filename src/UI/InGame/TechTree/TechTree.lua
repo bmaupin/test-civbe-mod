@@ -1832,7 +1832,11 @@ function Initialize()
 
 	-- Hard coded/special filters:
 	table.insert( g_filterTable, { "", "TXT_KEY_TECHWEB_FILTER_NONE", nil } );
-	table.insert( g_filterTable, { "", "TXT_KEY_TECHWEB_FILTER_RECOMMENDED", g_TechFilters.TECHFILTER_RECOMMENDED } );
+	-- === BEGIN MOD: Add conditional for compatibility with base game ===
+	if g_TechFilters and g_TechFilters.TECHFILTER_RECOMMENDED then
+		table.insert( g_filterTable, { "", "TXT_KEY_TECHWEB_FILTER_RECOMMENDED", g_TechFilters.TECHFILTER_RECOMMENDED } );
+	end
+	-- === END MOD ===
 
 	-- Load entried into filter table from TechFilters XML data
 	for row in GameInfo.TechFilters() do
