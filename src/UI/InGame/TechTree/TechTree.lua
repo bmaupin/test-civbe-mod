@@ -765,6 +765,23 @@ function RefreshDisplayOfSpecificTech( tech )
  	local isTechOwner 		= activeTeam:GetTeamTechs():HasTech(techID);
  	local isNowResearching	= (g_player:GetCurrentResearch() == techID);
 
+	-- === BEGIN MOD: Hide techs the player can never research ===
+	--
+	--     If a tech is added to the Civilization_DisableTechs table, the game does
+	--     prevent the player from researching it, however it is still shown in the tech
+	--     web and there is no clear visual indication that the tech cannot be researched
+	--     other than the fact that clicking on it does nothing. Instead, we hide it
+	--     altogether for better UX.
+	if g_player ~= nil and g_player:IsHuman() then
+		if not g_player:CanEverResearch(techID) then
+			-- print("(Triptych) Hiding tech node:", tech.Type)
+			if thisTechButton then
+				thisTechButton.TechButton:SetHide(true)
+			end
+			return -- stop processing this tech
+		end
+	end
+	-- === END MOD ===
 
 	-- Advisor recommendations...
 

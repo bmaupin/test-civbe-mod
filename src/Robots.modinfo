@@ -28,6 +28,7 @@
     <File md5="dcc6dc20d5526a346ee1c435775c76ae" import="1">Art/Robots_Scene.xml</File>
     <File md5="2017b31894cc1b4470304d230033e173" import="0">SQL/Civilization_DisableTechs.sql</File>
     <File md5="e9404dda0e75dafdaf66ed522357cc4d" import="0">SQL/Civilizations.sql</File>
+    <File md5="878ce27b1f7c0d8f74d669d2da1735de" import="1">UI/InGame/TechTree/TechTree.lua</File>
   </Files>
   <Actions>
     <OnModActivated>
