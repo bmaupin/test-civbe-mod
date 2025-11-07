@@ -1,9 +1,47 @@
--- Prevent human players from being able to research supremacy technologies
+-- Prevent non-alien factions fro researching harmony techs
 INSERT INTO Civilization_DisableTechs (CivilizationType, TechType)
 SELECT Civilizations.Type, Technology_Affinities.TechType
 FROM Civilizations
 CROSS JOIN Technology_Affinities
--- The default is 1 so explicitly check against 0 in case it's null, e.g. in another mod
-WHERE Civilizations.Playable != 0
+WHERE Civilizations.Playable = 1
+  AND Civilizations.Type NOT IN
+  (
+    'CIVILIZATION_FRANCO_IBERIA',
+    'CIVILIZATION_POLYSTRALIA',
+    'CIVILIZATION_RUSSIA'
+  )
+  AND AffinityType = 'AFFINITY_TYPE_HARMONY'
+  AND AffinityValue >= 20;
+
+-- Prevent non-human factions fro researching purity techs
+INSERT INTO Civilization_DisableTechs (CivilizationType, TechType)
+SELECT Civilizations.Type, Technology_Affinities.TechType
+FROM Civilizations
+CROSS JOIN Technology_Affinities
+WHERE Civilizations.Playable = 1
+  AND Civilizations.Type NOT IN
+  (
+    'CIVILIZATION_AFRICAN_UNION',
+    'CIVILIZATION_BRASILIA',
+    'CIVILIZATION_PAN_ASIA',
+    'CIVILIZATION_KAVITHAN',
+    'CIVILIZATION_AL_FALAH',
+    'CIVILIZATION_NORTH_SEA_ALLIANCE'
+  )
+  AND AffinityType = 'AFFINITY_TYPE_PURITY'
+  AND AffinityValue >= 20;
+
+-- Prevent non-robot factions fro researching supremacy techs
+INSERT INTO Civilization_DisableTechs (CivilizationType, TechType)
+SELECT Civilizations.Type, Technology_Affinities.TechType
+FROM Civilizations
+CROSS JOIN Technology_Affinities
+WHERE Civilizations.Playable = 1
+  AND Civilizations.Type NOT IN
+  (
+    'CIVILIZATION_ARC',
+    'CIVILIZATION_INTEGR',
+    'CIVILIZATION_CHUNGSU'
+  )
   AND AffinityType = 'AFFINITY_TYPE_SUPREMACY'
-  AND AffinityValue > 0;
+  AND AffinityValue >= 20;
