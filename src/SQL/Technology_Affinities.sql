@@ -1,4 +1,5 @@
--- Remove affinity points from branch techs
+-- Remove affinity points from branch techs because we don't want to block any branch
+-- techs and we also don't want any hybrid affinities
 DELETE FROM Technology_Affinities
 WHERE AffinityValue = 7
     -- Only apply for Rising Tide
