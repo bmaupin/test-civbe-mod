@@ -18,6 +18,10 @@ echo "Extracting mod files ..."
 temp_dir=$(mktemp -d -p $(pwd))
 7z x "${mod_name_version}.civbemod" -o"${temp_dir}"
 
+# Inject the current timestamp into the mod teaser text. This makes it easier to tell if
+# the mod has been updated when doing development.
+sed -i "s|\(<Teaser>\)[^<]*\(</Teaser>\)|\1$(date)\2|" "${temp_dir}/${mod_name_version}.modinfo"
+
 echo "Copying mod files ..."
 mod_directory="${user_directory}/MODS/${mod_name_version}"
 rm -rf "${mod_directory}"
