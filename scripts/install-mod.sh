@@ -22,3 +22,7 @@ echo "Copying mod files ..."
 mod_directory="${user_directory}/MODS/${mod_name_version}"
 rm -rf "${mod_directory}"
 mv "${temp_dir}" "${mod_directory}"
+
+# This hack seems to be enough to signal to the game that there have been changes to mods 🤷‍♂️
+touch "${user_directory}/MODS/test"
+rm "${user_directory}/MODS/test"
