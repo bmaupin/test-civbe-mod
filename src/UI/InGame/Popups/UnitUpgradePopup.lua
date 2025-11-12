@@ -30,7 +30,12 @@ local MAX_PARTICLES				:number = 30;	-- UI FX for upgrading
 local HEIGHT_TOP_PANEL			:number = 36;
 local HEIGHT_TOP_BANNER			:number = 2;
 local HEIGHT_TABS_BANNER		:number = 80;
-local MAX_UPGRADE_LEVELS		:number = 3;	
+-- === BEGIN MOD: Hide all tier 3 and 4 upgrades ===
+--     The upgrades themselves are disabled elsewhere, by setting affinity requirements
+--     to 99 for each one
+-- local MAX_UPGRADE_LEVELS		:number = 3;
+local MAX_UPGRADE_LEVELS		:number = 1;
+-- === END MOD ===
 local TEXTURE_SLOT				:string = "UnitUpgradePerkSlotPrevious.dds";
 local TEXTURE_SLOT_CURRENT		:string = "UnitUpgradePerkSlotCurrent.dds";
 local TEXTURE_SLOT_FUTURE		:string = "UnitUpgradePerkSlotFuture.dds";
