@@ -29,13 +29,17 @@
     <File md5="74b8dcc803b13f6b347df254b8ee19da" import="0">SQL/Civilization_DisableTechs.sql</File>
     <File md5="19d65e102aaa4bce8255c78ab50f45e8" import="0">SQL/Technology_Affinities.sql</File>
     <File md5="585533192c8adda5437acb84674de6cc" import="0">SQL/Units.sql</File>
+    <File md5="4b293bfa2c90026b92915a58b3f14673" import="0">SQL/UnitUpgrades.sql</File>
     <File md5="878ce27b1f7c0d8f74d669d2da1735de" import="1">UI/InGame/TechTree/TechTree.lua</File>
+    <File md5="cf024cdf85c9781d74fdf12b9dd71464" import="1">UI/InGame/Popups/UnitUpgradePopup.lua</File>
+    <File md5="d7a8d917440a24b84ef9c5d3b551a685" import="1">UI/InGame/Popups/UnitUpgradePopup.xml</File>
   </Files>
   <Actions>
     <OnModActivated>
       <UpdateDatabase>SQL/Civilization_DisableTechs.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Technology_Affinities.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Units.sql</UpdateDatabase>
+      <UpdateDatabase>SQL/UnitUpgrades.sql</UpdateDatabase>
     </OnModActivated>
   </Actions>
   <EntryPoints>
