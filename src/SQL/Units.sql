@@ -188,3 +188,64 @@ WHERE UnitType = 'UNIT_RANGED_MARINE';
 
 DELETE FROM Unit_ResourceQuantityRequirements
 WHERE UnitType = 'UNIT_AQUILON';
+
+
+
+-- Humans: Use soldier but with tier 3-4 graphics and audio
+UPDATE ArtDefine_UnitInfos
+SET
+  PortraitCamera = (SELECT PortraitCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_MARINE03P'),
+  UpgradeCamera = (SELECT UpgradeCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_MARINE03P')
+WHERE Type = 'ART_DEF_UNIT_MARINE01';
+
+UPDATE ArtDefine_UnitInfoMemberInfos
+SET
+  UnitMemberInfoType = (SELECT UnitMemberInfoType FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_MARINE03P'),
+  NumMembers = (SELECT NumMembers FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_MARINE03P')
+WHERE UnitInfoType = 'ART_DEF_UNIT_MARINE01';
+
+UPDATE ArtDefine_UnitInfos
+SET
+  PortraitCamera = (SELECT PortraitCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_MARINE04P'),
+  UpgradeCamera = (SELECT UpgradeCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_MARINE04P')
+WHERE Type = 'ART_DEF_UNIT_MARINE02';
+
+UPDATE ArtDefine_UnitInfoMemberInfos
+SET
+  UnitMemberInfoType = (SELECT UnitMemberInfoType FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_MARINE04P'),
+  NumMembers = (SELECT NumMembers FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_MARINE04P')
+WHERE UnitInfoType = 'ART_DEF_UNIT_MARINE02';
+
+-- TODO: Update audio
+--       - UnitGameplay2DScripts
+--       - ???
+
+-- Humans: Use ranger but with tier 3-4 graphics and audio
+UPDATE ArtDefine_UnitInfos
+SET
+  PortraitCamera = (SELECT PortraitCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_RANGED_MARINE03P'),
+  UpgradeCamera = (SELECT UpgradeCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_RANGED_MARINE03P')
+WHERE Type = 'ART_DEF_UNIT_RANGED_MARINE01';
+
+UPDATE ArtDefine_UnitInfoMemberInfos
+SET
+  UnitMemberInfoType = (SELECT UnitMemberInfoType FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_RANGED_MARINE03P'),
+  NumMembers = (SELECT NumMembers FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_RANGED_MARINE03P')
+WHERE UnitInfoType = 'ART_DEF_UNIT_RANGED_MARINE01';
+
+UPDATE ArtDefine_UnitInfos
+SET
+  PortraitCamera = (SELECT PortraitCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_RANGED_MARINE04P'),
+  UpgradeCamera = (SELECT UpgradeCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_RANGED_MARINE04P')
+WHERE Type = 'ART_DEF_UNIT_RANGED_MARINE02';
+
+UPDATE ArtDefine_UnitInfoMemberInfos
+SET
+  UnitMemberInfoType = (SELECT UnitMemberInfoType FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_RANGED_MARINE04P'),
+  NumMembers = (SELECT NumMembers FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_RANGED_MARINE04P')
+WHERE UnitInfoType = 'ART_DEF_UNIT_RANGED_MARINE02';
+
+-- TODO: Update audio
+--       - UnitGameplay2DScripts
+--       - ???
+
