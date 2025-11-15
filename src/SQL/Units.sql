@@ -177,6 +177,94 @@ WHERE UpgradeType = 'UNITUPGRADE_RANGED_MARINE_1';
 
 
 
+-- Aliens: Use combat rover as soldier replacement
+UPDATE Units
+SET Combat = (SELECT Combat FROM Units WHERE Type = 'UNIT_MARINE'),
+    RangedCombat = (SELECT RangedCombat FROM Units WHERE Type = 'UNIT_MARINE'),
+    Cost = (SELECT Cost FROM Units WHERE Type = 'UNIT_MARINE'),
+    PrereqTech = (SELECT PrereqTech FROM Units WHERE Type = 'UNIT_MARINE'),
+    -- TODO
+    -- Description = (SELECT Description FROM Units WHERE Type = 'UNIT_MARINE'),
+    -- Civilopedia = (SELECT Civilopedia FROM Units WHERE Type = 'UNIT_MARINE'),
+    -- Help = (SELECT Help FROM Units WHERE Type = 'UNIT_MARINE'),
+    Description = 'TXT_KEY_UNIT_ALIEN_SOLDIER',
+    Civilopedia = 'TXT_KEY_UNIT_ALIEN_SOLDIER_PEDIA',
+    Help = 'TXT_KEY_UNIT_ALIEN_SOLDIER_HELP',
+    Moves = (SELECT Moves FROM Units WHERE Type = 'UNIT_MARINE'),
+    Range = (SELECT Range FROM Units WHERE Type = 'UNIT_MARINE'),
+    -- Which promotions (not upgrades) unit is eligible for
+    CombatClass = (SELECT CombatClass FROM Units WHERE Type = 'UNIT_MARINE'),
+    DefaultUnitAI = (SELECT DefaultUnitAI FROM Units WHERE Type = 'UNIT_MARINE'),
+    IgnoreBuildingDefense = (SELECT IgnoreBuildingDefense FROM Units WHERE Type = 'UNIT_MARINE'),
+    AdvancedStartCost = (SELECT AdvancedStartCost FROM Units WHERE Type = 'UNIT_MARINE'),
+    Invisibility = (SELECT Invisibility FROM Units WHERE Type = 'UNIT_MARINE'),
+    Conscription = (SELECT Conscription FROM Units WHERE Type = 'UNIT_MARINE'),
+    -- Movement cost, etc.
+    MoveRate = (SELECT MoveRate FROM Units WHERE Type = 'UNIT_MARINE')
+WHERE Type = 'UNIT_CAVALRY';
+
+DELETE FROM Unit_AITypes
+WHERE UnitType = 'UNIT_CAVALRY';
+
+INSERT INTO Unit_AITypes (UnitType, UnitAIType)
+SELECT 'UNIT_CAVALRY', UnitAIType
+FROM Unit_AITypes
+WHERE UnitType = 'UNIT_MARINE';
+
+DELETE FROM Unit_Flavors
+WHERE UnitType = 'UNIT_CAVALRY';
+
+INSERT INTO Unit_Flavors (UnitType, FlavorType, Flavor)
+SELECT 'UNIT_CAVALRY', FlavorType, Flavor
+FROM Unit_Flavors
+WHERE UnitType = 'UNIT_MARINE';
+
+DELETE FROM Unit_FreePromotions
+WHERE UnitType = 'UNIT_CAVALRY';
+
+INSERT INTO Unit_FreePromotions (UnitType, PromotionType)
+SELECT 'UNIT_CAVALRY', PromotionType
+FROM Unit_FreePromotions
+WHERE UnitType = 'UNIT_MARINE';
+
+DELETE FROM UnitUpgradePerkChoices
+WHERE UpgradeType = 'UNITUPGRADE_CAVALRY_1';
+
+INSERT INTO UnitUpgradePerkChoices (UpgradeType, PerkType)
+SELECT 'UNITUPGRADE_CAVALRY_1', PerkType
+FROM UnitUpgradePerkChoices
+WHERE UpgradeType = 'UNITUPGRADE_MARINE_1';
+
+UPDATE ArtDefine_UnitInfos
+SET
+  PortraitCamera = (SELECT PortraitCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_CAVALRY03H'),
+  UpgradeCamera = (SELECT UpgradeCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_CAVALRY03H')
+WHERE Type = 'ART_DEF_UNIT_CAVALRY01';
+
+UPDATE ArtDefine_UnitInfoMemberInfos
+SET
+  UnitMemberInfoType = (SELECT UnitMemberInfoType FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_CAVALRY03H'),
+  NumMembers = (SELECT NumMembers FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_CAVALRY03H')
+WHERE UnitInfoType = 'ART_DEF_UNIT_CAVALRY01';
+
+UPDATE ArtDefine_UnitInfos
+SET
+  PortraitCamera = (SELECT PortraitCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_CAVALRY04H'),
+  UpgradeCamera = (SELECT UpgradeCamera FROM ArtDefine_UnitInfos WHERE Type = 'ART_DEF_UNIT_CAVALRY04H')
+WHERE Type = 'ART_DEF_UNIT_CAVALRY02';
+
+UPDATE ArtDefine_UnitInfoMemberInfos
+SET
+  UnitMemberInfoType = (SELECT UnitMemberInfoType FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_CAVALRY04H'),
+  NumMembers = (SELECT NumMembers FROM ArtDefine_UnitInfoMemberInfos WHERE UnitInfoType = 'ART_DEF_UNIT_CAVALRY04H')
+WHERE UnitInfoType = 'ART_DEF_UNIT_CAVALRY02';
+
+-- TODO: Update audio
+--       - UnitGameplay2DScripts
+--       - ???
+
+
+
 -- Aliens: Use Aquilon as ranger replacement
 UPDATE Units
 SET Combat = (SELECT Combat FROM Units WHERE Type = 'UNIT_RANGED_MARINE'),
