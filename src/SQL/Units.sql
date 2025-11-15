@@ -64,7 +64,6 @@ VALUES
   ('CIVILIZATION_KAVITHAN', 'UNITCLASS_CAVALRY', NULL),
   ('CIVILIZATION_KAVITHAN', 'UNITCLASS_GELIOPOD', NULL),
   ('CIVILIZATION_KAVITHAN', 'UNITCLASS_NANOHIVE', NULL),
-  -- TODO: uncomment after testing
   ('CIVILIZATION_AL_FALAH', 'UNITCLASS_AQUILON', NULL),
   ('CIVILIZATION_AL_FALAH', 'UNITCLASS_CAVALRY', NULL),
   ('CIVILIZATION_AL_FALAH', 'UNITCLASS_GELIOPOD', NULL),
@@ -117,6 +116,17 @@ WHERE UnitType = 'UNIT_NANOHIVE';
 DELETE FROM Unit_PassiveAbilities
 WHERE UnitType = 'UNIT_NANOHIVE';
 
+UPDATE UnitUpgrades
+SET
+  -- TODO
+  Description = 'TXT_KEY_UNIT_ROBOT_SOLDIER02',
+  HarmonyLevel = (SELECT HarmonyLevel FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_MARINE_1'),
+  SupremacyLevel = (SELECT SupremacyLevel FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_MARINE_1'),
+  AnyAffinityLevel = (SELECT AnyAffinityLevel FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_MARINE_1'),
+  ExtraProductionCost = (SELECT ExtraProductionCost FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_MARINE_1'),
+  FreePerk = (SELECT FreePerk FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_MARINE_1')
+WHERE Type = 'UNITUPGRADE_NANOHIVE_1S';
+
 DELETE FROM UnitUpgradePerkChoices
 WHERE UpgradeType = 'UNITUPGRADE_NANOHIVE_1S';
 
@@ -166,6 +176,17 @@ WHERE UnitType = 'UNIT_RANGED_MARINE';
 
 DELETE FROM Unit_ResourceQuantityRequirements
 WHERE UnitType = 'UNIT_GELIOPOD';
+
+UPDATE UnitUpgrades
+SET
+  -- TODO
+  Description = 'TXT_KEY_UNIT_ROBOT_RANGER02',
+  HarmonyLevel = (SELECT HarmonyLevel FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_RANGED_MARINE_1'),
+  SupremacyLevel = (SELECT SupremacyLevel FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_RANGED_MARINE_1'),
+  AnyAffinityLevel = (SELECT AnyAffinityLevel FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_RANGED_MARINE_1'),
+  ExtraProductionCost = (SELECT ExtraProductionCost FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_RANGED_MARINE_1'),
+  FreePerk = (SELECT FreePerk FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_RANGED_MARINE_1')
+WHERE Type = 'UNITUPGRADE_GELIOPOD_1S';
 
 DELETE FROM UnitUpgradePerkChoices
 WHERE UpgradeType = 'UNITUPGRADE_GELIOPOD_1S';
@@ -226,6 +247,15 @@ INSERT INTO Unit_FreePromotions (UnitType, PromotionType)
 SELECT 'UNIT_CAVALRY', PromotionType
 FROM Unit_FreePromotions
 WHERE UnitType = 'UNIT_MARINE';
+
+UPDATE UnitUpgrades
+SET
+  -- TODO
+  Description = 'TXT_KEY_UNIT_ALIEN_SOLDIER02',
+	AnyAffinityLevel = (SELECT AnyAffinityLevel FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_MARINE_1'),
+	ExtraProductionCost = (SELECT ExtraProductionCost FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_MARINE_1'),
+  FreePerk = (SELECT FreePerk FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_MARINE_1')
+WHERE Type = 'UNITUPGRADE_CAVALRY_1';
 
 DELETE FROM UnitUpgradePerkChoices
 WHERE UpgradeType = 'UNITUPGRADE_CAVALRY_1';
@@ -306,6 +336,17 @@ WHERE UnitType = 'UNIT_RANGED_MARINE';
 
 DELETE FROM Unit_ResourceQuantityRequirements
 WHERE UnitType = 'UNIT_AQUILON';
+
+UPDATE UnitUpgrades
+SET
+  -- TODO
+  Description = 'TXT_KEY_UNIT_ALIEN_RANGER02',
+  HarmonyLevel = (SELECT HarmonyLevel FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_RANGED_MARINE_1'),
+  SupremacyLevel = (SELECT SupremacyLevel FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_RANGED_MARINE_1'),
+  AnyAffinityLevel = (SELECT AnyAffinityLevel FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_RANGED_MARINE_1'),
+  ExtraProductionCost = (SELECT ExtraProductionCost FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_RANGED_MARINE_1'),
+  FreePerk = (SELECT FreePerk FROM UnitUpgrades WHERE Type = 'UNITUPGRADE_RANGED_MARINE_1')
+WHERE Type = 'UNITUPGRADE_AQUILON_1H';
 
 DELETE FROM UnitUpgradePerkChoices
 WHERE UpgradeType = 'UNITUPGRADE_AQUILON_1H';
