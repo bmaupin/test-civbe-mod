@@ -73,6 +73,8 @@ VALUES
   ('CIVILIZATION_NORTH_SEA_ALLIANCE', 'UNITCLASS_GELIOPOD', NULL),
   ('CIVILIZATION_NORTH_SEA_ALLIANCE', 'UNITCLASS_NANOHIVE', NULL);
 
+
+
 -- Robots: Use Nanohive as soldier replacement
 UPDATE Units
 SET Combat = (SELECT Combat FROM Units WHERE Type = 'UNIT_MARINE'),
@@ -356,6 +358,13 @@ SELECT 'UNITUPGRADE_AQUILON_1H', PerkType
 FROM UnitUpgradePerkChoices
 WHERE UpgradeType = 'UNITUPGRADE_RANGED_MARINE_1';
 
+-- Since the normal Aquilon unit is pretty powerful, the model is pretty big to reflect
+-- this; scale it down
+UPDATE ArtDefine_UnitMemberInfos
+SET Scale = Scale * 0.65
+WHERE Type = 'ART_DEF_UNIT_MEMBER_AQUILON';
+
+
 
 -- Humans: Use soldier but with tier 3-4 graphics and audio
 UPDATE ArtDefine_UnitInfos
@@ -385,6 +394,8 @@ WHERE UnitInfoType = 'ART_DEF_UNIT_MARINE02';
 -- TODO: Update audio
 --       - UnitGameplay2DScripts
 --       - ???
+
+
 
 -- Humans: Use ranger but with tier 3-4 graphics and audio
 UPDATE ArtDefine_UnitInfos
