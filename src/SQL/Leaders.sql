@@ -3,33 +3,78 @@ SET
   ArtDefineTag = 'Robots_Scene.xml'
 WHERE Type = 'LEADER_CHUNGSU';
 
-UPDATE Leader_Flavors
-SET Flavor = 12
-WHERE FlavorType = 'FLAVOR_SUPREMACY'
-  AND LeaderType = 'LEADER_CHUNGSU';
-
-INSERT INTO Leader_Flavors (LeaderType, FlavorType, Flavor)
-SELECT 'LEADER_CHUNGSU', 'FLAVOR_SUPREMACY', 12
-WHERE NOT EXISTS (
-  SELECT LeaderType FROM Leader_Flavors
-  WHERE LeaderType = 'LEADER_CHUNGSU'
-  AND FlavorType = 'FLAVOR_SUPREMACY'
-);
-
 UPDATE Leaders
 SET
   ArtDefineTag = 'Alien1_Scene.xml'
 WHERE Type = 'LEADER_POLYSTRALIA';
 
-UPDATE Leader_Flavors
-SET Flavor = 12
-WHERE FlavorType = 'FLAVOR_HARMONY'
-  AND LeaderType = 'LEADER_POLYSTRALIA';
+DELETE FROM Leader_Flavors
+WHERE LeaderType != 'LEADER_ALIEN'
+  AND FlavorType IN (
+    'FLAVOR_EMANCIPATION',
+    'FLAVOR_HARMONY',
+    'FLAVOR_PROMISED_LAND',
+    'FLAVOR_PURITY',
+    'FLAVOR_SUPREMACY',
+    'FLAVOR_TRANSCENDENCE'
+  );
 
 INSERT INTO Leader_Flavors (LeaderType, FlavorType, Flavor)
-SELECT 'LEADER_POLYSTRALIA', 'FLAVOR_HARMONY', 12
-WHERE NOT EXISTS (
-  SELECT LeaderType FROM Leader_Flavors
-  WHERE LeaderType = 'LEADER_POLYSTRALIA'
-  AND FlavorType = 'FLAVOR_HARMONY'
-);
+SELECT
+  leaders.LeaderType,
+  flavours.FlavorType,
+  flavours.Flavor
+FROM (
+  SELECT 'LEADER_ARC' AS LeaderType UNION ALL
+  SELECT 'LEADER_CHUNGSU' AS LeaderType UNION ALL
+  SELECT 'LEADER_INTEGR' AS LeaderType
+) AS leaders
+CROSS JOIN (
+  SELECT 'FLAVOR_EMANCIPATION' AS FlavorType, 9 AS Flavor UNION ALL
+  SELECT 'FLAVOR_HARMONY' AS FlavorType, -2 AS Flavor UNION ALL
+  SELECT 'FLAVOR_PROMISED_LAND' AS FlavorType, -2 AS Flavor UNION ALL
+  SELECT 'FLAVOR_PURITY' AS FlavorType, -2 AS Flavor UNION ALL
+  SELECT 'FLAVOR_SUPREMACY' AS FlavorType, 12 AS Flavor UNION ALL
+  SELECT 'FLAVOR_TRANSCENDENCE' AS FlavorType, -2 AS Flavor
+) AS flavours;
+
+INSERT INTO Leader_Flavors (LeaderType, FlavorType, Flavor)
+SELECT
+  leaders.LeaderType,
+  flavours.FlavorType,
+  flavours.Flavor
+FROM (
+  SELECT 'LEADER_FRANCO_IBERIA' AS LeaderType UNION ALL
+  SELECT 'LEADER_POLYSTRALIA' AS LeaderType UNION ALL
+  SELECT 'LEADER_RUSSIA' AS LeaderType
+) AS leaders
+CROSS JOIN (
+  SELECT 'FLAVOR_EMANCIPATION' AS FlavorType, -2 AS Flavor UNION ALL
+  SELECT 'FLAVOR_HARMONY' AS FlavorType, 12 AS Flavor UNION ALL
+  SELECT 'FLAVOR_PROMISED_LAND' AS FlavorType, -2 AS Flavor UNION ALL
+  SELECT 'FLAVOR_PURITY' AS FlavorType, -2 AS Flavor UNION ALL
+  SELECT 'FLAVOR_SUPREMACY' AS FlavorType, -2 AS Flavor UNION ALL
+  SELECT 'FLAVOR_TRANSCENDENCE' AS FlavorType, 9 AS Flavor
+) AS flavours;
+
+INSERT INTO Leader_Flavors (LeaderType, FlavorType, Flavor)
+SELECT
+  leaders.LeaderType,
+  flavours.FlavorType,
+  flavours.Flavor
+FROM (
+  SELECT 'LEADER_AFRICAN_UNION' AS LeaderType UNION ALL
+  SELECT 'LEADER_AL_FALAH' AS LeaderType UNION ALL
+  SELECT 'LEADER_BRASILIA' AS LeaderType UNION ALL
+  SELECT 'LEADER_INDIA' AS LeaderType UNION ALL
+  SELECT 'LEADER_NORTH_SEA_ALLIANCE' AS LeaderType UNION ALL
+  SELECT 'LEADER_PAN_ASIA' AS LeaderType
+) AS leaders
+CROSS JOIN (
+  SELECT 'FLAVOR_EMANCIPATION' AS FlavorType, -2 AS Flavor UNION ALL
+  SELECT 'FLAVOR_HARMONY' AS FlavorType, -2 AS Flavor UNION ALL
+  SELECT 'FLAVOR_PROMISED_LAND' AS FlavorType, 9 AS Flavor UNION ALL
+  SELECT 'FLAVOR_PURITY' AS FlavorType, 12 AS Flavor UNION ALL
+  SELECT 'FLAVOR_SUPREMACY' AS FlavorType, -2 AS Flavor UNION ALL
+  SELECT 'FLAVOR_TRANSCENDENCE' AS FlavorType, -2 AS Flavor
+) AS flavours;
