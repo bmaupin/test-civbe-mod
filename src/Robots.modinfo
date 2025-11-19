@@ -23,6 +23,9 @@
   <Blocks />
   <!-- See here for more information about this section: https://forums.civfanatics.com/threads/file-attributes-properties-is-that-vfs-ingameuiaddin-or-updatedatabase.487846/ -->
   <Files>
+    <File md5="4d41b7ccf6a04e30ae1b1fd9292c7af7" import="1">Art/Alien1_Environment.xml</File>
+    <File md5="de2d79a47c1c3302221e2c27a675c037" import="1">Art/Alien1_Scene.dds</File>
+    <File md5="44829a109cce4073ae1b6098cb28dd01" import="1">Art/Alien1_Scene.xml</File>
     <File md5="5e17f80ae4dd3842d73010bfc5358f4e" import="1">Art/Robots_Environment.xml</File>
     <File md5="181f1dbcd40ea1db4e6e372b2215c333" import="1">Art/Robots_Scene.dds</File>
     <File md5="dcc6dc20d5526a346ee1c435775c76ae" import="1">Art/Robots_Scene.xml</File>
