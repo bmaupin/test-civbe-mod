@@ -1,4 +1,4 @@
--- Prevent non-alien factions fro researching harmony techs
+-- Prevent non-alien factions from researching harmony techs
 INSERT INTO Civilization_DisableTechs (CivilizationType, TechType)
 SELECT Civilizations.Type, Technology_Affinities.TechType
 FROM Civilizations
@@ -13,7 +13,7 @@ WHERE Civilizations.Playable = 1
   AND AffinityType = 'AFFINITY_TYPE_HARMONY'
   AND AffinityValue >= 20;
 
--- Prevent non-human factions fro researching purity techs
+-- Prevent non-human factions from researching purity techs
 INSERT INTO Civilization_DisableTechs (CivilizationType, TechType)
 SELECT Civilizations.Type, Technology_Affinities.TechType
 FROM Civilizations
@@ -31,7 +31,7 @@ WHERE Civilizations.Playable = 1
   AND AffinityType = 'AFFINITY_TYPE_PURITY'
   AND AffinityValue >= 20;
 
--- Prevent non-robot factions fro researching supremacy techs
+-- Prevent non-robot factions from researching supremacy techs
 INSERT INTO Civilization_DisableTechs (CivilizationType, TechType)
 SELECT Civilizations.Type, Technology_Affinities.TechType
 FROM Civilizations

@@ -330,6 +330,19 @@ function IsMatchingFilter( filter:string, unit:table )
 	elseif	filter == Filter.MELEE	then isMatching = (unit.RangedStrength <= 0) and (unit.Domain ~= GameInfo.Domains[DomainTypes.DOMAIN_SEA].Type); 
 	end
 
+	-- === BEGIN MOD: Hide units the player can't build because they can't research the tech ===
+	local prereqTech = unit.RequiredTech;
+	if prereqTech then
+		local techInfo = GameInfo.Technologies[prereqTech];
+		if techInfo then
+			if not m_player:CanEverResearch(techInfo.ID) then
+				print("(Triptych) Hiding unit " .. unit.Type .. " because its prerequisite tech " .. prereqTech .. " is not researchable by this player.");
+				return false;
+			end
+		end
+	end
+	-- === END MOD ===
+
 	return isMatching;
 end
 
