@@ -18,9 +18,12 @@
     <ReloadStrategicViewSystem>0</ReloadStrategicViewSystem>
     <ReloadUnitSystem>1</ReloadUnitSystem>
   </Properties>
-  <Dependencies />
+  <Dependencies>
+    <Dlc id="54D2B257-C591-4045-8F17-A69F033166C7" minversion="0" maxversion="9999" title="Rising Tide" />
+  </Dependencies>
+  <!-- Mods in References will be loaded first if they're installed, but unlike Dependencies they're not required -->
   <References>
-    <Mod id="9412c9bf-a7b2-481e-b42e-431f06aac221" minversion="0" maxversion="999" title="Mini Beyond Earth" />
+    <Mod id="9412c9bf-a7b2-481e-b42e-431f06aac221" minversion="0" maxversion="9999" title="Mini Beyond Earth" />
   </References>
   <Blocks />
   <!-- See here for more information about this section: https://forums.civfanatics.com/threads/file-attributes-properties-is-that-vfs-ingameuiaddin-or-updatedatabase.487846/ -->
