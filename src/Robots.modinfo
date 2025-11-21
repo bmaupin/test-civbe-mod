@@ -16,7 +16,7 @@
     <ReloadAudioSystem>0</ReloadAudioSystem>
     <ReloadLandmarkSystem>0</ReloadLandmarkSystem>
     <ReloadStrategicViewSystem>0</ReloadStrategicViewSystem>
-    <ReloadUnitSystem>0</ReloadUnitSystem>
+    <ReloadUnitSystem>1</ReloadUnitSystem>
   </Properties>
   <Dependencies />
   <References />
