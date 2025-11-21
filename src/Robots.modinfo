@@ -29,17 +29,20 @@
     <File md5="5e17f80ae4dd3842d73010bfc5358f4e" import="1">Art/Robots_Environment.xml</File>
     <File md5="181f1dbcd40ea1db4e6e372b2215c333" import="1">Art/Robots_Scene.dds</File>
     <File md5="dcc6dc20d5526a346ee1c435775c76ae" import="1">Art/Robots_Scene.xml</File>
-    <File md5="74b8dcc803b13f6b347df254b8ee19da" import="0">SQL/Civilization_DisableTechs.sql</File>
-    <File md5="19d65e102aaa4bce8255c78ab50f45e8" import="0">SQL/Technology_Affinities.sql</File>
-    <File md5="585533192c8adda5437acb84674de6cc" import="0">SQL/Units.sql</File>
-    <File md5="4b293bfa2c90026b92915a58b3f14673" import="0">SQL/UnitUpgrades.sql</File>
-    <File md5="878ce27b1f7c0d8f74d669d2da1735de" import="1">UI/InGame/TechTree/TechTree.lua</File>
-    <File md5="cf024cdf85c9781d74fdf12b9dd71464" import="1">UI/InGame/Popups/UnitUpgradePopup.lua</File>
+    <File md5="48505e1c54ad93c74273843d2c4063b2" import="1">Gameplay/Lua/AssignStartingPlots.lua</File>
+    <File md5="30e5b3a13baa5ff35abb33d94eacad7d" import="0">SQL/Civilization_DisableTechs.sql</File>
+    <File md5="75130aac7dc9ed0e8d2bf7e35494a792" import="0">SQL/Leaders.sql</File>
+    <File md5="223276e4dae76f308b2a515a5bb58e67" import="0">SQL/Technology_Affinities.sql</File>
+    <File md5="60c4bfa3371228366562e0c2d8ed2fce" import="0">SQL/Units.sql</File>
+    <File md5="39512924c8ded7c76a30f3e9e0e30fea" import="0">SQL/UnitUpgrades.sql</File>
+    <File md5="5e98f679467d5361dcb7641739fcb0aa" import="1">UI/InGame/TechTree/TechTree.lua</File>
+    <File md5="6e8abd0cefb6d27b234abd0b13c2cb54" import="1">UI/InGame/Popups/UnitUpgradePopup.lua</File>
     <File md5="d7a8d917440a24b84ef9c5d3b551a685" import="1">UI/InGame/Popups/UnitUpgradePopup.xml</File>
   </Files>
   <Actions>
     <OnModActivated>
       <UpdateDatabase>SQL/Civilization_DisableTechs.sql</UpdateDatabase>
+      <UpdateDatabase>SQL/Leaders.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Technology_Affinities.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Units.sql</UpdateDatabase>
       <UpdateDatabase>SQL/UnitUpgrades.sql</UpdateDatabase>
