@@ -4166,6 +4166,20 @@ end
 ------------------------------------------------------------------------------
 function AssignStartingPlots:CreateResources(fertilityMap : table)
 
+	-- === BEGIN MOD: Function to check if mod is enabled ===
+	--
+	-- Source: https://forums.civfanatics.com/threads/checking-whether-a-mod-is-active-by-id.558215/
+	function ModEnabledCheck(sModID)
+		for i,v in pairs(Modding.GetActivatedMods()) do
+			if sModID == v.ID then
+				return true;
+			end
+		end
+		return false;
+	end
+	local isMiniBeyondEarthModEnabled = ModEnabledCheck("9412c9bf-a7b2-481e-b42e-431f06aac221");
+	-- === END MOD ===
+
 	print("Creating Resources - Weighted Density method (AssignStartingPlots.Lua)");
 
 	--Initialize quantities
@@ -4335,7 +4349,18 @@ function AssignStartingPlots:CreateResources(fertilityMap : table)
 					end
 				end
 								
-				if bCanPlaceResource == true then
+				-- === BEGIN MOD: If Mini Beyond Earth is enabled, always place resources ===
+				--
+				-- Without this change, if Mini Beyond Earth is enabled the maps are so
+				-- small that not enough strategic resources get placed in order for
+				--  players to be able to build affinity-specific unique units because
+				-- resources end up too close to a civ start. This change might be better
+				-- placed in Mini Beyond Earth itself but that mod avoids overriding game
+				-- files as much as possible for maximum compatibility, whereas this mod
+				-- is already so game-breaking that it doesn't have that same design
+				-- constraint.
+				if bCanPlaceResource == true or isMiniBeyondEarthModEnabled then
+				-- === END MOD ===
 					plot:SetResourceType(resourceID, amount);
 				end
 
