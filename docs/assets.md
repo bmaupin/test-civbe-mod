@@ -1,6 +1,8 @@
 # Assets
 
-#### Leader portrait
+## Leader portraits
+
+#### Specs
 
 - 1600x900
 - DDS
@@ -15,6 +17,29 @@
   - Scene XML that links to DDS and environment XML
 - Leader's `ArtDefineTag` needs to point to scene XML
   - ⚠️ Leader, not Civilization
+
+## Leader icons
+
+#### Game assets
+
+- Leader entry points to this atlas: `<IconAtlas>LEADER_ATLAS_XP1</IconAtlas>`
+- Seems to be in this file: `<Filename>LeaderPortraitsXP1_256.dds</Filename>`
+
+#### Specs
+
+- Size: 256 x 256
+- Image contains a centred circular icon surrounded by transparency
+- Size of circular icon within image: 212 x 212
+  - This includes a 3-pixel black outline inside the icon
+- Image contains the top of the leader's torso from the base of the neck up to the top of their head
+  - Leader's head fills about 85% of the image
+- The leader is outlined in a 3-pixel black line
+- Background has a gradient style
+  - Top of gradient: `0a0f19`
+  - Bottom of gradient differs
+    - Greyish: `3d2d2d`
+    - Bluish: `3b2459`
+    - Greenish: `1d3f37`
 
 ## Game assets
 
@@ -31,3 +56,12 @@
 - Textures in Resource/DX11
   - .dds
     - Direct Draw texture files
+
+#### Find which package an asset is in
+
+Grep seems to work:
+
+```
+Sid Meier's Civilization Beyond Earth$ grep -i LeaderPortraitsXP1_256.dds -r
+grep: steamassets/resource/dx11/expansion1uitextures.fpk: binary file matches
+```
