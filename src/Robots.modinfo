@@ -29,8 +29,17 @@
   <!-- See here for more information about this section: https://forums.civfanatics.com/threads/file-attributes-properties-is-that-vfs-ingameuiaddin-or-updatedatabase.487846/ -->
   <Files>
     <File md5="4d41b7ccf6a04e30ae1b1fd9292c7af7" import="1">Art/Alien1_Environment.xml</File>
+    <File md5="9a20eb0fe675298093355062949541c7" import="1">Art/Alien1_Leader_128.dds</File>
+    <File md5="2a2fd2c57fa2291769d7008dcfbf48fa" import="1">Art/Alien1_Leader_256.dds</File>
+    <File md5="fe5aeb569ffd88fb410db92a944a0483" import="1">Art/Alien1_Leader_64.dds</File>
+    <File md5="5ff4db2a09990ec1a56d0d38fca3a3ec" import="1">Art/Alien1_Leader_80.dds</File>
     <File md5="de2d79a47c1c3302221e2c27a675c037" import="1">Art/Alien1_Scene.dds</File>
     <File md5="44829a109cce4073ae1b6098cb28dd01" import="1">Art/Alien1_Scene.xml</File>
+    <File md5="305055537ca30ce0c79ca697b181054c" import="0">Art/IconTextureAtlases.xml</File>
+    <File md5="dc603180d5f46fa5d6671b38b3b43938" import="1">Art/Robot1_Leader_128.dds</File>
+    <File md5="503395bb4b040d1e8a3b2e37362934f2" import="1">Art/Robot1_Leader_256.dds</File>
+    <File md5="251470ff72cfc6caf2d208301d245477" import="1">Art/Robot1_Leader_64.dds</File>
+    <File md5="69c0eff9f918447a8c11d75141c7254a" import="1">Art/Robot1_Leader_80.dds</File>
     <File md5="5e17f80ae4dd3842d73010bfc5358f4e" import="1">Art/Robots_Environment.xml</File>
     <File md5="181f1dbcd40ea1db4e6e372b2215c333" import="1">Art/Robots_Scene.dds</File>
     <File md5="dcc6dc20d5526a346ee1c435775c76ae" import="1">Art/Robots_Scene.xml</File>
@@ -46,6 +55,7 @@
   </Files>
   <Actions>
     <OnModActivated>
+      <UpdateDatabase>Art/IconTextureAtlases.xml</UpdateDatabase>
       <UpdateDatabase>SQL/Civilization_DisableTechs.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Leaders.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Technology_Affinities.sql</UpdateDatabase>

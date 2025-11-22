@@ -4,6 +4,16 @@ mod_name=$(yq -p xml -oy ".Mod.Properties.Name" src/*.modinfo)
 mod_version=$(yq -p xml -oy ".Mod.+@version" "src/${mod_name}.modinfo")
 mod_name_version="$(echo "${mod_name} (v ${mod_version})")"
 
+echo "Creating smaller leader images ..."
+pushd src/Art/ > /dev/null
+for filename in $(find . -type f -iname "*_Leader_256.dds" | cut -c 3-); do
+    civ_name=$(echo "$filename" | cut -d _ -f 1)
+    convert "${civ_name}_Leader_256.dds" -resize 128x128 "${civ_name}_Leader_128.dds"
+    convert "${civ_name}_Leader_256.dds" -resize 80x80 "${civ_name}_Leader_80.dds"
+    convert "${civ_name}_Leader_256.dds" -resize 64x64 "${civ_name}_Leader_64.dds"
+done
+popd > /dev/null
+
 echo "Updating mod file checksums ..."
 pushd src > /dev/null
 # Override IFS (internal field separator) in order to handle files with spaces in name

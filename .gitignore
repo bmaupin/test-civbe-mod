@@ -1,1 +1,5 @@
 *.civbemod
+# These are all deterministically generated from larger images so there's no need for them to be in git
+src/Art/*_Leader_128.dds
+src/Art/*_Leader_80.dds
+src/Art/*_Leader_64.dds

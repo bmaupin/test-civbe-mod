@@ -1,11 +1,15 @@
 UPDATE Leaders
 SET
-  ArtDefineTag = 'Robots_Scene.xml'
+  ArtDefineTag = 'Robots_Scene.xml',
+  IconAtlas = 'ROBOT1_LEADER_ATLAS',
+  PortraitIndex = 0
 WHERE Type = 'LEADER_CHUNGSU';
 
 UPDATE Leaders
 SET
-  ArtDefineTag = 'Alien1_Scene.xml'
+  ArtDefineTag = 'Alien1_Scene.xml',
+  IconAtlas = 'ALIEN1_LEADER_ATLAS',
+  PortraitIndex = 0
 WHERE Type = 'LEADER_POLYSTRALIA';
 
 DELETE FROM Leader_Flavors
