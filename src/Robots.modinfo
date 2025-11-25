@@ -43,7 +43,8 @@
     <File md5="5e17f80ae4dd3842d73010bfc5358f4e" import="1">Art/Robots_Environment.xml</File>
     <File md5="181f1dbcd40ea1db4e6e372b2215c333" import="1">Art/Robots_Scene.dds</File>
     <File md5="dcc6dc20d5526a346ee1c435775c76ae" import="1">Art/Robots_Scene.xml</File>
-    <File md5="48505e1c54ad93c74273843d2c4063b2" import="1">Gameplay/Lua/AssignStartingPlots.lua</File>
+    <File md5="8145cd0bb774356deedd31430d9512a8" import="1">Gameplay/Lua/AssignStartingPlots.lua</File>
+    <File md5="14a93614920c064a3f7556ad815443dc" import="0">Lua/Logic.lua</File>
     <File md5="30e5b3a13baa5ff35abb33d94eacad7d" import="0">SQL/Civilization_DisableTechs.sql</File>
     <File md5="75130aac7dc9ed0e8d2bf7e35494a792" import="0">SQL/Leaders.sql</File>
     <File md5="223276e4dae76f308b2a515a5bb58e67" import="0">SQL/Technology_Affinities.sql</File>
@@ -64,5 +65,9 @@
     </OnModActivated>
   </Actions>
   <EntryPoints>
+    <EntryPoint type="InGameUIAddin" file="Lua/Logic.lua">
+      <Name>Lua/Logic.lua</Name>
+      <Description>Mod logic</Description>
+    </EntryPoint>
   </EntryPoints>
 </Mod>
