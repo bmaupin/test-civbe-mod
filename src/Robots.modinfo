@@ -29,11 +29,11 @@
   <!-- See here for more information about this section: https://forums.civfanatics.com/threads/file-attributes-properties-is-that-vfs-ingameuiaddin-or-updatedatabase.487846/ -->
   <Files>
     <File md5="4d41b7ccf6a04e30ae1b1fd9292c7af7" import="1">Art/Alien1_Environment.xml</File>
-    <File md5="9a20eb0fe675298093355062949541c7" import="1">Art/Alien1_Leader_128.dds</File>
-    <File md5="2a2fd2c57fa2291769d7008dcfbf48fa" import="1">Art/Alien1_Leader_256.dds</File>
-    <File md5="fe5aeb569ffd88fb410db92a944a0483" import="1">Art/Alien1_Leader_64.dds</File>
-    <File md5="5ff4db2a09990ec1a56d0d38fca3a3ec" import="1">Art/Alien1_Leader_80.dds</File>
-    <File md5="de2d79a47c1c3302221e2c27a675c037" import="1">Art/Alien1_Scene.dds</File>
+    <File md5="dc20adaf477cb7ad863868f82322cd55" import="1">Art/Alien1_Leader_128.dds</File>
+    <File md5="9b2769471094791caa82a28320649c0a" import="1">Art/Alien1_Leader_256.dds</File>
+    <File md5="7c69546dd99b37269ded167daa035690" import="1">Art/Alien1_Leader_64.dds</File>
+    <File md5="0acf5ea949638ceb5441adaa1b665610" import="1">Art/Alien1_Leader_80.dds</File>
+    <File md5="de74deb1681c93b82a579d7c52dbe238" import="1">Art/Alien1_Scene.dds</File>
     <File md5="44829a109cce4073ae1b6098cb28dd01" import="1">Art/Alien1_Scene.xml</File>
     <File md5="305055537ca30ce0c79ca697b181054c" import="0">Art/IconTextureAtlases.xml</File>
     <File md5="dc603180d5f46fa5d6671b38b3b43938" import="1">Art/Robot1_Leader_128.dds</File>
@@ -42,7 +42,7 @@
     <File md5="69c0eff9f918447a8c11d75141c7254a" import="1">Art/Robot1_Leader_80.dds</File>
     <File md5="5e17f80ae4dd3842d73010bfc5358f4e" import="1">Art/Robot1_Environment.xml</File>
     <File md5="181f1dbcd40ea1db4e6e372b2215c333" import="1">Art/Robot1_Scene.dds</File>
-    <File md5="dcc6dc20d5526a346ee1c435775c76ae" import="1">Art/Robot1_Scene.xml</File>
+    <File md5="f13e4bda554dc8eef0318a4ad27da4aa" import="1">Art/Robot1_Scene.xml</File>
     <File md5="8145cd0bb774356deedd31430d9512a8" import="1">Gameplay/Lua/AssignStartingPlots.lua</File>
     <File md5="14a93614920c064a3f7556ad815443dc" import="0">Lua/Logic.lua</File>
     <File md5="db34d9d10f107377e2e8ac672d0f9db4" import="0">SQL/Civilizations.sql</File>
