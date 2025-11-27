@@ -7,7 +7,7 @@ WHERE Type = 'LEADER_ARC';
 
 UPDATE Leaders
 SET
-  ArtDefineTag = 'Robots_Scene.xml',
+  ArtDefineTag = 'Robot1_Scene.xml',
   Description = 'TXT_KEY_LEADER_ROBOT1_DESC',
   IconAtlas = 'ROBOT1_LEADER_ATLAS',
   PortraitIndex = 0
