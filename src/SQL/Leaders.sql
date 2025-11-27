@@ -1,16 +1,51 @@
 UPDATE Leaders
 SET
+  Description = 'TXT_KEY_LEADER_ROBOT3_DESC'
+WHERE Type = 'LEADER_ARC';
+
+
+
+UPDATE Leaders
+SET
   ArtDefineTag = 'Robots_Scene.xml',
+  Description = 'TXT_KEY_LEADER_ROBOT1_DESC',
   IconAtlas = 'ROBOT1_LEADER_ATLAS',
   PortraitIndex = 0
 WHERE Type = 'LEADER_CHUNGSU';
 
+
+
+UPDATE Leaders
+SET
+  Description = 'TXT_KEY_LEADER_ALIEN3_DESC'
+WHERE Type = 'LEADER_FRANCO_IBERIA';
+
+
+
+UPDATE Leaders
+SET
+  Description = 'TXT_KEY_LEADER_ROBOT2_DESC'
+WHERE Type = 'LEADER_INTEGR';
+
+
+
 UPDATE Leaders
 SET
   ArtDefineTag = 'Alien1_Scene.xml',
+  Description = 'TXT_KEY_LEADER_ALIEN1_DESC',
   IconAtlas = 'ALIEN1_LEADER_ATLAS',
   PortraitIndex = 0
 WHERE Type = 'LEADER_POLYSTRALIA';
+
+
+
+UPDATE Leaders
+SET
+  Description = 'TXT_KEY_LEADER_ALIEN2_DESC'
+WHERE Type = 'LEADER_RUSSIA';
+
+
+
 
 DELETE FROM Leader_Flavors
 WHERE LeaderType != 'LEADER_ALIEN'

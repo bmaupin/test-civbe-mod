@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GameData>
+    <Language_en_US>
+        <Row Tag="TXT_KEY_CIV_ALIEN1_DESC">
+            <Text>Vraxil</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ALIEN1_SHORT_DESC">
+            <Text>Vraxil</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ALIEN1_ADJECTIVE">
+            <Text>Vraxil</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ALIEN2_DESC">
+            <Text>The Swarm</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ALIEN2_SHORT_DESC">
+            <Text>The Swarm</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ALIEN2_ADJECTIVE">
+            <Text>Swarm</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ALIEN3_DESC">
+            <Text>Franco-Synth Consortium</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ALIEN3_SHORT_DESC">
+            <Text>Franco-Synth Consortium</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ALIEN3_ADJECTIVE">
+            <Text>Franco-Synth</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ROBOT1_DESC">
+            <Text>Xervon Dominion</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ROBOT1_SHORT_DESC">
+            <Text>Xervon Dominion</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ROBOT1_ADJECTIVE">
+            <Text>Xervon</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ROBOT2_DESC">
+            <Text>Silicate Collective</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ROBOT2_SHORT_DESC">
+            <Text>Silicate Collective</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ROBOT2_ADJECTIVE">
+            <Text>Silicate</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ROBOT3_DESC">
+            <Text>United States of Klorplath</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ROBOT3_SHORT_DESC">
+            <Text>United States of Klorplath</Text>
+        </Row>
+        <Row Tag="TXT_KEY_CIV_ROBOT3_ADJECTIVE">
+            <Text>USK</Text>
+        </Row>
+        <Row Tag="TXT_KEY_LEADER_ALIEN1_DESC">
+            <Text>Serex Ka’Ruun</Text>
+        </Row>
+        <Row Tag="TXT_KEY_LEADER_ALIEN2_DESC">
+            <Text>Xyr’uthal</Text>
+        </Row>
+        <Row Tag="TXT_KEY_LEADER_ALIEN3_DESC">
+            <Text>Élodie 2.0</Text>
+        </Row>
+        <Row Tag="TXT_KEY_LEADER_ROBOT1_DESC">
+            <Text>Xervon Prime</Text>
+        </Row>
+        <Row Tag="TXT_KEY_LEADER_ROBOT2_DESC">
+            <Text>Unit 0B3F9A</Text>
+        </Row>
+        <Row Tag="TXT_KEY_LEADER_ROBOT3_DESC">
+            <Text>Suzanne Zar’Neth</Text>
+        </Row>
+    </Language_en_US>
+</GameData>
