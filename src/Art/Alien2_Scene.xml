@@ -1,0 +1,17 @@
+<LeaderScene>
+  <FallbackImage ID="Level1" image="Alien2_Scene.dds" />
+  <FallbackImage ID="Level2_Purity" image="Alien2_Scene.dds" />
+  <FallbackImage ID="Level2_Harmony" image="Alien2_Scene.dds" />
+  <FallbackImage ID="Level2_Supremacy" image="Alien2_Scene.dds" />
+  <FallbackImage ID="Level3_Purity" image="Alien2_Scene.dds" />
+  <FallbackImage ID="Level3_Harmony" image="Alien2_Scene.dds" />
+  <FallbackImage ID="Level3_Supremacy" image="Alien2_Scene.dds" />
+
+  <Environment ID="Level1" XML="Alien2_Environment.xml" />
+  <Environment ID="Level2_Purity" XML="Alien2_Environment.xml" />
+  <Environment ID="Level2_Harmony" XML="Alien2_Environment.xml" />
+  <Environment ID="Level2_Supremacy" XML="Alien2_Environment.xml" />
+  <Environment ID="Level3_Purity" XML="Alien2_Environment.xml" />
+  <Environment ID="Level3_Harmony" XML="Alien2_Environment.xml" />
+  <Environment ID="Level3_Supremacy" XML="Alien2_Environment.xml" />
+</LeaderScene>

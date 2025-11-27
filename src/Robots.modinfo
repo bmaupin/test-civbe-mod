@@ -35,6 +35,13 @@
     <File md5="0acf5ea949638ceb5441adaa1b665610" import="1">Art/Alien1_Leader_80.dds</File>
     <File md5="de74deb1681c93b82a579d7c52dbe238" import="1">Art/Alien1_Scene.dds</File>
     <File md5="44829a109cce4073ae1b6098cb28dd01" import="1">Art/Alien1_Scene.xml</File>
+    <File md5="4d41b7ccf6a04e30ae1b1fd9292c7af7" import="1">Art/Alien2_Environment.xml</File>
+    <File md5="12ad9b0431439b87616a2adcbb571623" import="1">Art/Alien2_Leader_128.dds</File>
+    <File md5="2b32a26fafb542605762edec36088dce" import="1">Art/Alien2_Leader_256.dds</File>
+    <File md5="394438f5b51044775539bd4c9f674cfd" import="1">Art/Alien2_Leader_64.dds</File>
+    <File md5="62fd626589dc42bc1434f8c939078526" import="1">Art/Alien2_Leader_80.dds</File>
+    <File md5="347269a7f1f25294475a3c8d4107e63f" import="1">Art/Alien2_Scene.dds</File>
+    <File md5="c432eecfab1aaed9f70cb09137307734" import="1">Art/Alien2_Scene.xml</File>
     <File md5="305055537ca30ce0c79ca697b181054c" import="0">Art/IconTextureAtlases.xml</File>
     <File md5="dc603180d5f46fa5d6671b38b3b43938" import="1">Art/Robot1_Leader_128.dds</File>
     <File md5="503395bb4b040d1e8a3b2e37362934f2" import="1">Art/Robot1_Leader_256.dds</File>
@@ -43,11 +50,18 @@
     <File md5="5e17f80ae4dd3842d73010bfc5358f4e" import="1">Art/Robot1_Environment.xml</File>
     <File md5="181f1dbcd40ea1db4e6e372b2215c333" import="1">Art/Robot1_Scene.dds</File>
     <File md5="f13e4bda554dc8eef0318a4ad27da4aa" import="1">Art/Robot1_Scene.xml</File>
+    <File md5="4d41b7ccf6a04e30ae1b1fd9292c7af7" import="1">Art/Robot2_Environment.xml</File>
+    <File md5="3685b2dbed9e1373b8bb157e49639134" import="1">Art/Robot2_Leader_128.dds</File>
+    <File md5="8865fab54bff30278d1c3b6b259b5114" import="1">Art/Robot2_Leader_256.dds</File>
+    <File md5="5797785c82ec04a884132da5b4447a9e" import="1">Art/Robot2_Leader_64.dds</File>
+    <File md5="872f8f8c145fe50e02874bd42ec4678b" import="1">Art/Robot2_Leader_80.dds</File>
+    <File md5="6b9297781b098958298a589963b7e7dc" import="1">Art/Robot2_Scene.dds</File>
+    <File md5="36e209c5a475af02421605ce58f637bb" import="1">Art/Robot2_Scene.xml</File>
     <File md5="8145cd0bb774356deedd31430d9512a8" import="1">Gameplay/Lua/AssignStartingPlots.lua</File>
     <File md5="14a93614920c064a3f7556ad815443dc" import="0">Lua/Logic.lua</File>
     <File md5="db34d9d10f107377e2e8ac672d0f9db4" import="0">SQL/Civilizations.sql</File>
     <File md5="30e5b3a13baa5ff35abb33d94eacad7d" import="0">SQL/Civilization_DisableTechs.sql</File>
-    <File md5="fd29adc5d17ff8103e2feb157bf59a6d" import="0">SQL/Leaders.sql</File>
+    <File md5="ba931e77ca6df7a6f1065e2ad2c9a7ca" import="0">SQL/Leaders.sql</File>
     <File md5="223276e4dae76f308b2a515a5bb58e67" import="0">SQL/Technology_Affinities.sql</File>
     <File md5="60c4bfa3371228366562e0c2d8ed2fce" import="0">SQL/Units.sql</File>
     <File md5="39512924c8ded7c76a30f3e9e0e30fea" import="0">SQL/UnitUpgrades.sql</File>

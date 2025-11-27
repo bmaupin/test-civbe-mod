@@ -24,7 +24,10 @@ WHERE Type = 'LEADER_FRANCO_IBERIA';
 
 UPDATE Leaders
 SET
-  Description = 'TXT_KEY_LEADER_ROBOT2_DESC'
+  ArtDefineTag = 'Robot2_Scene.xml',
+  Description = 'TXT_KEY_LEADER_ROBOT2_DESC',
+  IconAtlas = 'ROBOT2_LEADER_ATLAS',
+  PortraitIndex = 0
 WHERE Type = 'LEADER_INTEGR';
 
 
@@ -41,7 +44,10 @@ WHERE Type = 'LEADER_POLYSTRALIA';
 
 UPDATE Leaders
 SET
-  Description = 'TXT_KEY_LEADER_ALIEN2_DESC'
+  ArtDefineTag = 'Alien2_Scene.xml',
+  Description = 'TXT_KEY_LEADER_ALIEN2_DESC',
+  IconAtlas = 'ALIEN2_LEADER_ATLAS',
+  PortraitIndex = 0
 WHERE Type = 'LEADER_RUSSIA';
 
 
