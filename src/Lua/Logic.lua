@@ -25,15 +25,15 @@ local function CanDeclareWar(myTeam, theirTeam)
             end
         end
 
-        -- print("(Triptych) Blocking war declaration for team " .. teamID);
         return false;
     end
 
-    -- If myTeam has at least one relevant tech, war is allowed.
-    if TeamHasAffinityUnlock(myTeam) then
+    -- If both teams have at least one relevant tech, war is allowed.
+    if TeamHasAffinityUnlock(myTeam) and TeamHasAffinityUnlock(theirTeam) then
         return true;
     end
 
+    -- print("(Triptych) Blocking war declaration for team " .. myTeam .. " against team " .. theirTeam);
     return false;
 end
 GameEvents.CanDeclareWar.Add(CanDeclareWar);
