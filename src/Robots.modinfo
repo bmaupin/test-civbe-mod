@@ -61,7 +61,7 @@
     <File md5="c6871b63a6e11f74fef4018642285ecf" import="0">Lua/Logic.lua</File>
     <File md5="db34d9d10f107377e2e8ac672d0f9db4" import="0">SQL/Civilizations.sql</File>
     <File md5="30e5b3a13baa5ff35abb33d94eacad7d" import="0">SQL/Civilization_DisableTechs.sql</File>
-    <File md5="ba931e77ca6df7a6f1065e2ad2c9a7ca" import="0">SQL/Leaders.sql</File>
+    <File md5="41f7011dd0e6523b3903034324664e32" import="0">SQL/Leaders.sql</File>
     <File md5="223276e4dae76f308b2a515a5bb58e67" import="0">SQL/Technology_Affinities.sql</File>
     <File md5="60c4bfa3371228366562e0c2d8ed2fce" import="0">SQL/Units.sql</File>
     <File md5="39512924c8ded7c76a30f3e9e0e30fea" import="0">SQL/UnitUpgrades.sql</File>
