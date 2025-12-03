@@ -42,7 +42,7 @@
     <File md5="62fd626589dc42bc1434f8c939078526" import="1">Art/Alien2_Leader_80.dds</File>
     <File md5="347269a7f1f25294475a3c8d4107e63f" import="1">Art/Alien2_Scene.dds</File>
     <File md5="c432eecfab1aaed9f70cb09137307734" import="1">Art/Alien2_Scene.xml</File>
-    <File md5="305055537ca30ce0c79ca697b181054c" import="0">Art/IconTextureAtlases.xml</File>
+    <File md5="55b285f211598be3188db4ac3c8dc5df" import="0">Art/IconTextureAtlases.xml</File>
     <File md5="dc603180d5f46fa5d6671b38b3b43938" import="1">Art/Robot1_Leader_128.dds</File>
     <File md5="503395bb4b040d1e8a3b2e37362934f2" import="1">Art/Robot1_Leader_256.dds</File>
     <File md5="251470ff72cfc6caf2d208301d245477" import="1">Art/Robot1_Leader_64.dds</File>
