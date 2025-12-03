@@ -1,3 +1,5 @@
+-- See https://forums.civfanatics.com/threads/community-ideas-diplomacy-flavors-for-ai-leaders.666737/
+
 UPDATE Leaders
 SET
   AffinityDevotion = 12,
@@ -13,10 +15,11 @@ WHERE LeaderType != 'LEADER_ALIEN';
 UPDATE Leader_Flavors
 SET Flavor = CASE FlavorType
   -- AI should build equal numbers of offence and defence units
-  WHEN 'FLAVOR_DEFENSE' THEN 8
+  WHEN 'FLAVOR_DEFENSE' THEN 5
   WHEN 'FLAVOR_EXPANSION' THEN 8
-  WHEN 'FLAVOR_OFFENSE' THEN 8
-  -- Science is super important; set to max for everybody
+  WHEN 'FLAVOR_OFFENSE' THEN 5
+  -- Affinities are key to stronger units, victories, etc. Affinity points primarily come
+  -- from technologies, which need science to research, so max out science for everybody.
   WHEN 'FLAVOR_SCIENCE' THEN 12
   ELSE Flavor
 END
