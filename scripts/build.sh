@@ -2,6 +2,12 @@
 
 # This contains all the common build steps needed before packaging or installing the mod
 
+# Exit if not running under bash
+if [ -z "$BASH_VERSION" ]; then
+    echo "This script must be run with bash" >&2
+    exit 1
+fi
+
 mod_name=$(yq -p xml -oy ".Mod.Properties.Name" src/*.modinfo)
 mod_version=$(yq -p xml -oy ".Mod.+@version" "src/${mod_name}.modinfo")
 mod_name_version="$(echo "${mod_name} (v ${mod_version})")"

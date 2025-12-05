@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Exit if not running under bash
+if [ -z "$BASH_VERSION" ]; then
+    echo "This script must be run with bash" >&2
+    exit 1
+fi
+
 # Build the mod in a temporary directory
 source "$(dirname "$(which "$0")")/build.sh"
 
