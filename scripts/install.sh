@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Build the mod package file
-source "$(dirname "$(which "$0")")/package-mod.sh"
+# Build the mod in a temporary directory
+source "$(dirname "$(which "$0")")/build.sh"
 
 mod_name_version="$(echo "${mod_name} (v ${mod_version})" | tr '[:upper:]' '[:lower:]')"
 
@@ -13,10 +13,6 @@ fi
 if [[ -f "/home/$USER/.steam/steam/steamapps/common/Sid Meier's Civilization Beyond Earth/CivilizationBE_DX11.exe" ]]; then
     user_directory="/home/${USER}/.steam/steam/steamapps/compatdata/65980/pfx/drive_c/users/steamuser/Documents/My Games/Sid Meier's Civilization Beyond Earth"
 fi
-
-echo "Extracting mod files ..."
-temp_dir=$(mktemp -d -p $(pwd))
-7z x "${mod_name_version}.civbemod" -o"${temp_dir}"
 
 # Inject the current timestamp into the mod teaser text. This makes it easier to tell if
 # the mod has been updated when doing development.
