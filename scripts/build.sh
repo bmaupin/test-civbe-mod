@@ -10,10 +10,16 @@ echo "Creating smaller leader images ..."
 pushd src/Art/ > /dev/null
 for filename in $(find . -type f -iname "*_Leader_256.dds" | cut -c 3-); do
     civ_name=$(echo "$filename" | cut -d _ -f 1)
-    # We could check first before converting but it's very fast; the slow part of this script is the creating and extraction of the 7z file
-    convert "${civ_name}_Leader_256.dds" -resize 128x128 "${civ_name}_Leader_128.dds"
-    convert "${civ_name}_Leader_256.dds" -resize 80x80 "${civ_name}_Leader_80.dds"
-    convert "${civ_name}_Leader_256.dds" -resize 64x64 "${civ_name}_Leader_64.dds"
+    # check that the destination file doesn't already exist
+    if [[ ! -f "${civ_name}_Leader_128.dds" ]]; then
+        convert "${civ_name}_Leader_256.dds" -resize 128x128 "${civ_name}_Leader_128.dds"
+    fi
+    if [[ ! -f "${civ_name}_Leader_80.dds" ]]; then
+        convert "${civ_name}_Leader_256.dds" -resize 80x80 "${civ_name}_Leader_80.dds"
+    fi
+    if [[ ! -f "${civ_name}_Leader_64.dds" ]]; then
+        convert "${civ_name}_Leader_256.dds" -resize 64x64 "${civ_name}_Leader_64.dds"
+    fi
 done
 popd > /dev/null
 
@@ -43,5 +49,5 @@ sed -i '/<File/s|>\(.*\)<|\L&|' "${mod_name_version}.modinfo"
 sed -i '/<UpdateDatabase>/s|>\(.*\)<|\L&|' "${mod_name_version}.modinfo"
 sed -i '/<EntryPoint/s|file="\([^"]*\)"|file="\L\1"|' "${mod_name_version}.modinfo"
 # Lower-case all file names for cross-platform compatibility, particularly Linux (https://stackoverflow.com/a/152741)
-find . -depth -exec rename 's/(.*)\/([^\/]*)/$1\/\L$2/' {} \;
+find . -depth -name '*[A-Z]*'|sed -n 's/\(.*\/\)\(.*\)/mv -n -T "\1\2" "\1\L\2"/p'|sh
 popd > /dev/null
