@@ -1,0 +1,31 @@
+{
+  "folders": [
+    {
+      "name": "test-civbe-mod",
+      "path": ".."
+    },
+    {
+      "name": "mini-beyond-earth",
+      "path": "../../mini-beyond-earth"
+    },
+    {
+      "name": "beyond-earth-eclipse",
+      "path": "../../beyond-earth-eclipse"
+    },
+    {
+      "name": "civ-modding-tools",
+      "path": "../../civ-modding-tools"
+    },
+    {
+      "name": "Sid Meier's Civilization Beyond Earth",
+      "path": "../../../../../.local/share/Steam/steamapps/common/Sid Meier's Civilization Beyond Earth"
+    },
+    {
+      "path": "../../civ-be-linux-fixes"
+    },
+    {
+      "path": "../../../../../.local/share/aspyr-media/Sid Meier's Civilization Beyond Earth"
+    }
+  ],
+  "settings": {}
+}
