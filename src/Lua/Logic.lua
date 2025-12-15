@@ -19,6 +19,7 @@ local function GetActiveNonAlienTeams()
 
     return list;
 end
+local activeTeams = GetActiveNonAlienTeams();
 
 -- Prevent early war declarations until a team has at least one affinity-specific unit tech
 local WAR_UNLOCKED = false;
@@ -48,11 +49,7 @@ local function CheckWarUnlock(playerID)
         GameInfo.Technologies["TECH_TACTICAL_ROBOTICS"].ID,
     };
 
-    local activeTeams = GetActiveNonAlienTeams();
-
-    local function TeamHasAffinityUnlock(teamID)
-        local team = activeTeams[teamID];
-
+    local function TeamHasAffinityUnlock(team)
         for _, techID in ipairs(AFFINITY_UNIT_TECHS) do
             if team:IsHasTech(techID) then
                 return true;
@@ -63,8 +60,8 @@ local function CheckWarUnlock(playerID)
     end
 
     -- Verify the unlock status for all teams
-    for teamID, team in pairs(activeTeams) do
-        if not TeamHasAffinityUnlock(teamID) then
+    for _teamID, team in pairs(activeTeams) do
+        if not TeamHasAffinityUnlock(team) then
             -- At least one team is still missing an unlock
             return;
         end
@@ -74,7 +71,7 @@ local function CheckWarUnlock(playerID)
     WAR_UNLOCKED = true;
 
     for teamID, team in pairs(activeTeams) do
-        for otherTeamID, otherTeam in pairs(activeTeams) do
+        for otherTeamID, _otherTeam in pairs(activeTeams) do
             if teamID ~= otherTeamID then
                 team:SetPermanentWarPeace(otherTeamID, false);
             end
@@ -86,10 +83,8 @@ GameEvents.PlayerDoTurn.Add(CheckWarUnlock);
 local function InitialisePermanentPeace()
     print("(Robots) Initialising global permanent peace lock...")
 
-    local activeTeams = GetActiveNonAlienTeams();
-
     for teamID, team in pairs(activeTeams) do
-        for otherTeamID, otherTeam in pairs(activeTeams) do
+        for otherTeamID, _otherTeam in pairs(activeTeams) do
             if teamID ~= otherTeamID then
                 team:SetPermanentWarPeace(otherTeamID, true);
             end
