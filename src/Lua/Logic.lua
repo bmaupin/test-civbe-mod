@@ -110,3 +110,90 @@ local function InitialisePermanentPeace()
 end
 -- Run this once at the start of the game
 Events.SequenceGameInitComplete.Add(InitialisePermanentPeace);
+
+-- Uncomment for autoplay until war is unlocked
+-- local function AutoPlay()
+--     print("(Robots) AutoPlay()");
+--     -- First parameter is number of turns to autoplay, second is player to return control to (or -1 for none)
+--     Game.SetAIAutoPlay(400, 0);
+-- end
+-- -- Run this once at the start of the game
+-- Events.SequenceGameInitComplete.Add(AutoPlay);
+
+-- -- -- The game may stop autoplay in certain situations (e.g. a unit was disbanded), so reenable if needed
+-- -- local function CheckAutoPlay(playerID)
+-- --     -- Only run the check once per turn by restricting to player 0 (or any single player)
+-- --     if playerID ~= 0 then
+-- --         return;
+-- --     end
+
+-- --     if Game.GetAIAutoPlay() == 0 then
+-- --         print("(Robots) Re-enabling AutoPlay()");
+-- --         Game.SetAIAutoPlay(400 - Game.GetGameTurn(), 0);
+-- --     end
+-- -- end
+-- -- GameEvents.PlayerDoTurn.Add(CheckAutoPlay);
+
+
+-- local function CheckAutoPlay(playerID)
+--     -- Only run the check once per turn by restricting to player 0 (or any single player)
+--     if playerID ~= 0 then
+--         return;
+--     end
+
+--     if IsWarUnlocked() then
+--         if Game.GetAIAutoPlay() > 0 then
+--             print("(Robots) WAR DECLARATIONS ENABLED: All teams have an affinity unit tech.");
+--             print("(Robots) Stopping autoplay on turn " .. Game.GetGameTurn() .. "!");
+--             Game.SetAIAutoPlay(1, 0);
+--         end
+--         return;
+--     end
+
+--     -- -- TODO: debugging
+--     -- for teamID, team in pairs(activeTeams) do
+--     --     for otherTeamID, otherTeam in pairs(activeTeams) do
+--     --         if teamID ~= otherTeamID then
+--     --             local isPermanentWarPeace = team:IsPermanentWarPeace(otherTeamID);
+--     --             print(string.format("(Robots) - Team %d vs Team %d: PermanentWarPeace = %s", teamID, otherTeamID, tostring(isPermanentWarPeace)));
+--     --         end
+--     --     end
+--     -- end
+
+--     local function GetAnyPlayerNameFromTeam(teamID)
+--         for i = 0, GameDefines.MAX_MAJOR_CIVS - 1 do
+--             local player = Players[i];
+--             if player and player:IsEverAlive() and not player:IsAlien() and not player:IsMinorCiv() then
+--                 if player:GetTeam() == teamID then
+--                     return player:GetName();
+--                 end
+--             end
+--         end
+--         return "Unknown";
+--     end
+
+--     -- For some reason the game will still
+--     local function CheckIfWar()
+--         for teamID, team in pairs(activeTeams) do
+--             for otherTeamID, otherTeam in pairs(activeTeams) do
+--                 if teamID ~= otherTeamID then
+--                     if team:IsAtWar(otherTeamID) then
+--                         if Game.GetAIAutoPlay() > 0 then
+--                             local nameA = GetAnyPlayerNameFromTeam(teamID);
+--                             local nameB = GetAnyPlayerNameFromTeam(otherTeamID);
+--                             -- print("(Robots) War declared between team " .. teamID .. " and team " .. otherTeamID .. "! Stopping autoplay on turn " .. Game.GetGameTurn());
+--                             print("(Robots) War declared between " .. nameA .. " and " .. nameB .. "! Stopping autoplay on turn " .. Game.GetGameTurn());
+--                             Game.SetAIAutoPlay(1, 0);
+--                         end
+--                         return;
+--                         -- print("(Robots) Forcing peace between team " .. teamID .. " and team " .. otherTeamID .. " due to missing affinity unlock.");
+--                         -- team:MakePeace(otherTeamID);
+--                     end
+--                 end
+--             end
+--         end
+--     end
+
+--     CheckIfWar();
+-- end
+-- GameEvents.PlayerDoTurn.Add(CheckAutoPlay);
