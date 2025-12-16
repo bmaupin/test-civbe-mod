@@ -23,33 +23,29 @@ local activeTeams = GetActiveNonAlienTeams();
 
 -- Prevent early war declarations until a team has at least one affinity-specific unit tech
 local WAR_UNLOCKED = false;
-
-local function CheckWarUnlock(playerID)
-    -- Only run the check once per turn
-    if playerID ~= 0 then
-        return;
-    end
-
+local function IsWarUnlocked()
     if WAR_UNLOCKED then
-        return;
+        return true;
     end
 
-    local AFFINITY_UNIT_TECHS = {
-        GameInfo.Technologies["TECH_ALIEN_ADAPTATION"].ID,
-        GameInfo.Technologies["TECH_ALIEN_DOMESTICATION"].ID,
-        GameInfo.Technologies["TECH_ALIEN_EVOLUTION"].ID,
-        GameInfo.Technologies["TECH_AUTOGYROS"].ID,
-        GameInfo.Technologies["TECH_DESIGNER_LIFEFORMS"].ID,
-        GameInfo.Technologies["TECH_MOBILE_LEV"].ID,
-        GameInfo.Technologies["TECH_NEURAL_UPLOADING"].ID,
-        GameInfo.Technologies["TECH_SERVOMACHINERY"].ID,
-        GameInfo.Technologies["TECH_SURROGACY"].ID,
-        GameInfo.Technologies["TECH_SYNTHETIC_THOUGHT"].ID,
-        GameInfo.Technologies["TECH_TACTICAL_LEV"].ID,
-        GameInfo.Technologies["TECH_TACTICAL_ROBOTICS"].ID,
-    };
+	local AFFINITY_UNIT_TECHS = {
+		GameInfo.Technologies["TECH_ALIEN_ADAPTATION"].ID,
+		GameInfo.Technologies["TECH_ALIEN_DOMESTICATION"].ID,
+		GameInfo.Technologies["TECH_ALIEN_EVOLUTION"].ID,
+		GameInfo.Technologies["TECH_AUTOGYROS"].ID,
+		GameInfo.Technologies["TECH_DESIGNER_LIFEFORMS"].ID,
+		GameInfo.Technologies["TECH_MOBILE_LEV"].ID,
+		GameInfo.Technologies["TECH_NEURAL_UPLOADING"].ID,
+		GameInfo.Technologies["TECH_SERVOMACHINERY"].ID,
+		GameInfo.Technologies["TECH_SURROGACY"].ID,
+		GameInfo.Technologies["TECH_SYNTHETIC_THOUGHT"].ID,
+		GameInfo.Technologies["TECH_TACTICAL_LEV"].ID,
+		GameInfo.Technologies["TECH_TACTICAL_ROBOTICS"].ID,
+	};
 
-    local function TeamHasAffinityUnlock(team)
+    local function TeamHasAffinityUnlock(teamID)
+        local team = activeTeams[teamID];
+
         for _, techID in ipairs(AFFINITY_UNIT_TECHS) do
             if team:IsHasTech(techID) then
                 return true;
@@ -59,30 +55,49 @@ local function CheckWarUnlock(playerID)
         return false;
     end
 
-    -- Verify the unlock status for all teams
-    for _teamID, team in pairs(activeTeams) do
-        if not TeamHasAffinityUnlock(team) then
+	-- Verify the unlock status for all teams
+    for teamID, _team in pairs(activeTeams) do
+        if not TeamHasAffinityUnlock(teamID) then
             -- At least one team is still missing an unlock
-            return;
+            return false;
         end
     end
 
     -- All teams have at least one affinity unlock — unlock war
-    WAR_UNLOCKED = true;
+    print("(Robots) WAR DECLARATIONS ENABLED: All teams have an affinity unit tech.");
+	WAR_UNLOCKED = true;
 
-    for teamID, team in pairs(activeTeams) do
-        for otherTeamID, _otherTeam in pairs(activeTeams) do
-            if teamID ~= otherTeamID then
-                team:SetPermanentWarPeace(otherTeamID, false);
+	return true;
+end
+
+local function CheckWarUnlock(playerID)
+    -- Only run the check once per turn
+    if playerID ~= 0 then
+        return;
+    end
+
+    if IsWarUnlocked() then
+        print("(Robots) Removing global permanent peace lock.");
+        for teamID, team in pairs(activeTeams) do
+            for otherTeamID, _otherTeam in pairs(activeTeams) do
+                if teamID ~= otherTeamID then
+                    team:SetPermanentWarPeace(otherTeamID, false);
+                end
             end
         end
     end
 end
 GameEvents.PlayerDoTurn.Add(CheckWarUnlock);
 
-local function InitialisePermanentPeace()
-    print("(Robots) Initialising global permanent peace lock...")
+local function PossiblyForcePeace(teamA, teamB)
+    if not IsWarUnlocked() then
+        print("(Robots) Cancelling war between", teamA, "and", teamB);
+        Teams[teamA]:MakePeace(teamB);
+    end
+end
+GameEvents.TeamsDeclaredWar.Add(PossiblyForcePeace);
 
+local function InitialisePermanentPeace()
     for teamID, team in pairs(activeTeams) do
         for otherTeamID, _otherTeam in pairs(activeTeams) do
             if teamID ~= otherTeamID then
