@@ -67,24 +67,22 @@ local function IsWarUnlocked()
     print("(Robots) WAR DECLARATIONS ENABLED: All teams have an affinity unit tech.");
 	WAR_UNLOCKED = true;
 
+    print("(Robots) Removing global permanent peace lock.");
+    for teamID, team in pairs(activeTeams) do
+        for otherTeamID, _otherTeam in pairs(activeTeams) do
+            if teamID ~= otherTeamID then
+                team:SetPermanentWarPeace(otherTeamID, false);
+            end
+        end
+    end
+
 	return true;
 end
 
 local function CheckWarUnlock(playerID)
     -- Only run the check once per turn
-    if playerID ~= 0 then
-        return;
-    end
-
-    if IsWarUnlocked() then
-        print("(Robots) Removing global permanent peace lock.");
-        for teamID, team in pairs(activeTeams) do
-            for otherTeamID, _otherTeam in pairs(activeTeams) do
-                if teamID ~= otherTeamID then
-                    team:SetPermanentWarPeace(otherTeamID, false);
-                end
-            end
-        end
+    if playerID == 0 then
+        IsWarUnlocked();
     end
 end
 GameEvents.PlayerDoTurn.Add(CheckWarUnlock);
@@ -111,11 +109,11 @@ end
 -- Run this once at the start of the game
 Events.SequenceGameInitComplete.Add(InitialisePermanentPeace);
 
--- Uncomment for autoplay until war is unlocked
+-- -- Uncomment for autoplay until war is unlocked
 -- local function AutoPlay()
 --     print("(Robots) AutoPlay()");
 --     -- First parameter is number of turns to autoplay, second is player to return control to (or -1 for none)
---     Game.SetAIAutoPlay(400, 0);
+--     Game.SetAIAutoPlay(1000, 0);
 -- end
 -- -- Run this once at the start of the game
 -- Events.SequenceGameInitComplete.Add(AutoPlay);
@@ -160,40 +158,69 @@ Events.SequenceGameInitComplete.Add(InitialisePermanentPeace);
 --     --     end
 --     -- end
 
---     local function GetAnyPlayerNameFromTeam(teamID)
---         for i = 0, GameDefines.MAX_MAJOR_CIVS - 1 do
---             local player = Players[i];
---             if player and player:IsEverAlive() and not player:IsAlien() and not player:IsMinorCiv() then
---                 if player:GetTeam() == teamID then
---                     return player:GetName();
---                 end
---             end
---         end
---         return "Unknown";
---     end
+--     -- local function GetAnyPlayerNameFromTeam(teamID)
+--     --     for i = 0, GameDefines.MAX_MAJOR_CIVS - 1 do
+--     --         local player = Players[i];
+--     --         if player and player:IsEverAlive() and not player:IsAlien() and not player:IsMinorCiv() then
+--     --             if player:GetTeam() == teamID then
+--     --                 return player:GetName();
+--     --             end
+--     --         end
+--     --     end
+--     --     return "Unknown";
+--     -- end
 
---     -- For some reason the game will still
---     local function CheckIfWar()
---         for teamID, team in pairs(activeTeams) do
---             for otherTeamID, otherTeam in pairs(activeTeams) do
---                 if teamID ~= otherTeamID then
---                     if team:IsAtWar(otherTeamID) then
---                         if Game.GetAIAutoPlay() > 0 then
---                             local nameA = GetAnyPlayerNameFromTeam(teamID);
---                             local nameB = GetAnyPlayerNameFromTeam(otherTeamID);
---                             -- print("(Robots) War declared between team " .. teamID .. " and team " .. otherTeamID .. "! Stopping autoplay on turn " .. Game.GetGameTurn());
---                             print("(Robots) War declared between " .. nameA .. " and " .. nameB .. "! Stopping autoplay on turn " .. Game.GetGameTurn());
---                             Game.SetAIAutoPlay(1, 0);
---                         end
---                         return;
---                         -- print("(Robots) Forcing peace between team " .. teamID .. " and team " .. otherTeamID .. " due to missing affinity unlock.");
---                         -- team:MakePeace(otherTeamID);
---                     end
---                 end
---             end
---         end
---     end
+--     -- -- For some reason the game will still
+--     -- local function CheckIfWar()
+--     --     for teamID, team in pairs(activeTeams) do
+--     --         for otherTeamID, otherTeam in pairs(activeTeams) do
+--     --             if teamID ~= otherTeamID then
+--     --                 if team:IsAtWar(otherTeamID) then
+--     --                     if Game.GetAIAutoPlay() > 0 then
+--     --                         local nameA = GetAnyPlayerNameFromTeam(teamID);
+--     --                         local nameB = GetAnyPlayerNameFromTeam(otherTeamID);
+--     --                         -- print("(Robots) War declared between team " .. teamID .. " and team " .. otherTeamID .. "! Stopping autoplay on turn " .. Game.GetGameTurn());
+--     --                         print("(Robots) War declared between " .. nameA .. " and " .. nameB .. "! Stopping autoplay on turn " .. Game.GetGameTurn());
+--     --                         Game.SetAIAutoPlay(1, 0);
+--     --                     end
+--     --                     return;
+--     --                     -- print("(Robots) Forcing peace between team " .. teamID .. " and team " .. otherTeamID .. " due to missing affinity unlock.");
+--     --                     -- team:MakePeace(otherTeamID);
+--     --                 end
+--     --             end
+--     --         end
+--     --     end
+--     -- end
 
---     CheckIfWar();
+--     -- CheckIfWar();
 -- end
 -- GameEvents.PlayerDoTurn.Add(CheckAutoPlay);
+
+-- local function AutoPlay()
+--     print("(Robots) AutoPlay()");
+--     -- First parameter is number of turns to autoplay, second is player to return control to (or -1 for none)
+--     Game.SetAIAutoPlay(1000, 0);
+-- end
+-- -- Run this once at the start of the game
+-- Events.SequenceGameInitComplete.Add(AutoPlay);
+
+-- -- Fires whenever a city is founded
+-- local function OnPlayerCityFounded(playerID, x, y)
+--     -- Utility: count total cities in the game
+--     local function GetTotalCityCount()
+--         local totalCities = 0;
+
+--         for playerID = 0, GameDefines.MAX_MAJOR_CIVS - 1 do
+--             local player = Players[playerID];
+--             if player ~= nil and player:IsEverAlive() then
+--                 totalCities = totalCities + player:GetNumCities();
+--             end
+--         end
+
+--         return totalCities;
+--     end;
+
+--     local totalCities = GetTotalCityCount();
+--     print("(Robots) City founded. Total cities:" .. tostring(totalCities) .. " turn:" .. tostring(Game.GetGameTurn()));
+-- end;
+-- GameEvents.PlayerCityFounded.Add(OnPlayerCityFounded);
