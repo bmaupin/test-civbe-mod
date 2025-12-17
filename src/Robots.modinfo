@@ -58,7 +58,7 @@
     <File md5="872f8f8c145fe50e02874bd42ec4678b" import="1">Art/Robot2_Leader_80.dds</File>
     <File md5="6b9297781b098958298a589963b7e7dc" import="1">Art/Robot2_Scene.dds</File>
     <File md5="36e209c5a475af02421605ce58f637bb" import="1">Art/Robot2_Scene.xml</File>
-    <File md5="8145cd0bb774356deedd31430d9512a8" import="1">Gameplay/Lua/AssignStartingPlots.lua</File>
+    <File md5="d3a358258602b1b4f8c2045e2ae58199" import="1">Gameplay/Lua/AssignStartingPlots.lua</File>
     <File md5="8392e9ed4dccac6e4799f7e345aae571" import="0">Lua/Logic.lua</File>
     <File md5="db34d9d10f107377e2e8ac672d0f9db4" import="0">SQL/Civilizations.sql</File>
     <File md5="30e5b3a13baa5ff35abb33d94eacad7d" import="0">SQL/Civilization_DisableTechs.sql</File>
