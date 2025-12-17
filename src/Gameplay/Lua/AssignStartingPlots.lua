@@ -4350,37 +4350,22 @@ function AssignStartingPlots:CreateResources(fertilityMap : table)
 		end
 	end
 
-	-- Add mandatory titanium, geothermal, petroleum to every start if Strategic Balance option is enabled.
-	if self.resource_setting == 5 then
-		local strategic = {};
-		local resourceCount = 0;
-		for resInfo in GameInfo.Resources() do
-			if(resInfo.ResourceClassType == GameInfo.ResourceClasses["RESOURCECLASS_STRATEGIC"].Type ) then
-				if (resInfo.Affinity == false) then
-					table.insert(strategic, resInfo.ID);
-					resourceCount = resourceCount + 1;
-				end
+	-- === BEGIN MOD: Function to check if mod is enabled ===
+	--
+	-- Source: https://forums.civfanatics.com/threads/checking-whether-a-mod-is-active-by-id.558215/
+	function ModEnabledCheck(sModID)
+		for i,v in pairs(Modding.GetActivatedMods()) do
+			if sModID == v.ID then
+				return true;
 			end
 		end
-
-		for player_num = 1, self.iNumCivs do
-			if(self.startingPlots[player_num][1] ~= nil and self.startingPlots[player_num][2] ~= nil) then
-				local x = self.startingPlots[player_num][1];
-				local y = self.startingPlots[player_num][2];
-				local plot = Map.GetPlot(x, y);
-			
-				local shuffled = GetShuffledCopyOfTable(strategic);
-				for i = 1, resourceCount + 1, 1 do
-					self.resourcesSet = 1;
-					local copy = {};
-					table.insert(copy, shuffled[i]);
-					self:SetResources(copy, plot, 2)
-				end
-			end
-		end
+		return false;
 	end
+	local isMiniBeyondEarthModEnabled = ModEnabledCheck("9412c9bf-a7b2-481e-b42e-431f06aac221");
+	-- === END MOD ===
 
-	-- === BEGIN MOD: If Mini Beyond Earth is enabled, add affinity resources to every start  ===
+	-- Add mandatory titanium, geothermal, petroleum to every start if Strategic Balance option is enabled.
+	-- === BEGIN MOD: If Mini Beyond Earth is enabled, add strategic resources to every start ===
 	--
 	-- Without this change, if Mini Beyond Earth is enabled the maps are so small that not
 	-- enough strategic resources get placed in order for players to be able to build
@@ -4391,25 +4376,15 @@ function AssignStartingPlots:CreateResources(fertilityMap : table)
 	-- This change might be better placed in Mini Beyond Earth itself but that mod avoids
 	-- overriding game files as much as possible for maximum compatibility, whereas this
 	-- modis already so game-breaking that it doesn't have that same design constraint.
-
-	-- Source for this function: https://forums.civfanatics.com/threads/checking-whether-a-mod-is-active-by-id.558215/
-	function ModEnabledCheck(sModID)
-		for i,v in pairs(Modding.GetActivatedMods()) do
-			if sModID == v.ID then
-				return true;
-			end
-		end
-		return false;
-	end
-	local isMiniBeyondEarthModEnabled = ModEnabledCheck("9412c9bf-a7b2-481e-b42e-431f06aac221");
-
-	-- Most of this is copied from the previous section
-	if isMiniBeyondEarthModEnabled then
+	if self.resource_setting == 5 or isMiniBeyondEarthModEnabled then
+	-- === END MOD ===
 		local strategic = {};
 		local resourceCount = 0;
 		for resInfo in GameInfo.Resources() do
 			if(resInfo.ResourceClassType == GameInfo.ResourceClasses["RESOURCECLASS_STRATEGIC"].Type ) then
-				if (resInfo.Affinity == true) then
+				-- === BEGIN MOD: If Mini Beyond Earth is enabled, add affinity resources as well ===
+				if (resInfo.Affinity == false or isMiniBeyondEarthModEnabled) then
+				-- === END MOD ===
 					table.insert(strategic, resInfo.ID);
 					resourceCount = resourceCount + 1;
 				end
@@ -4432,7 +4407,6 @@ function AssignStartingPlots:CreateResources(fertilityMap : table)
 			end
 		end
 	end
-	-- === END MOD ===
 end
 ------------------------------------------------------------------------------
 function AssignStartingPlots:Quantities(resource, amount, min, max)
