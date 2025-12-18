@@ -71,7 +71,7 @@
     <File md5="5e98f679467d5361dcb7641739fcb0aa" import="1">UI/InGame/TechTree/TechTree.lua</File>
     <File md5="6e8abd0cefb6d27b234abd0b13c2cb54" import="1">UI/InGame/Popups/UnitUpgradePopup.lua</File>
     <File md5="d7a8d917440a24b84ef9c5d3b551a685" import="1">UI/InGame/Popups/UnitUpgradePopup.xml</File>
-    <File md5="cf66e90699c3d51e200921277d9783ad" import="0">XML/Language_en_US.xml</File>
+    <File md5="821acb6da0ff81443c8d047794578f7a" import="0">XML/Language_en_US.xml</File>
   </Files>
   <Actions>
     <OnModActivated>

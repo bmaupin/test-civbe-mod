@@ -20,10 +20,10 @@
             <Text>Swarm</Text>
         </Row>
         <Row Tag="TXT_KEY_CIV_ALIEN3_DESC">
-            <Text>Franco-Synth Consortium</Text>
+            <Text>Franco-Synth Collective</Text>
         </Row>
         <Row Tag="TXT_KEY_CIV_ALIEN3_SHORT_DESC">
-            <Text>Franco-Synth Consortium</Text>
+            <Text>Franco-Synth Collective</Text>
         </Row>
         <Row Tag="TXT_KEY_CIV_ALIEN3_ADJECTIVE">
             <Text>Franco-Synth</Text>
@@ -38,13 +38,13 @@
             <Text>Xervon</Text>
         </Row>
         <Row Tag="TXT_KEY_CIV_ROBOT2_DESC">
-            <Text>Silicate Collective</Text>
+            <Text>11?011??001</Text>
         </Row>
         <Row Tag="TXT_KEY_CIV_ROBOT2_SHORT_DESC">
-            <Text>Silicate Collective</Text>
+            <Text>11?01</Text>
         </Row>
         <Row Tag="TXT_KEY_CIV_ROBOT2_ADJECTIVE">
-            <Text>Silicate</Text>
+            <Text>11?01</Text>
         </Row>
         <Row Tag="TXT_KEY_CIV_ROBOT3_DESC">
             <Text>United States of Klorplath</Text>
@@ -68,7 +68,7 @@
             <Text>Xervon Prime</Text>
         </Row>
         <Row Tag="TXT_KEY_LEADER_ROBOT2_DESC">
-            <Text>Unit 0B3F9A</Text>
+            <Text>0100?1110?1</Text>
         </Row>
         <Row Tag="TXT_KEY_LEADER_ROBOT3_DESC">
             <Text>Suzanne Zar’Neth</Text>
