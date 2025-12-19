@@ -777,9 +777,21 @@ function DefaultHandler_AffinityDiffers(traitScript : CvPersonalityTraitScript, 
 
 	local reactionInfo : table = nil;
 
-	if (affinityDiffersScore > 50) then
+	-- === BEGIN MOD: Decrease affinity differs score thresholds ===
+	--
+	-- This will make it so that the AI leaders will warn and confront at lower scores,
+	-- effectively lower affinity levels. The algorithm for calculating
+	-- affinityDiffersScore works like this:
+	-- 1. Start with the value of OPINION_WEIGHT_AFFINITY_DIFFERS as the base score (in GlobalDiplomacyAIDefines.xml)
+    -- 2. Then add the highest affinity of the "target player", so that would be the human player
+	-- 3. Then get the highest affinity of the requesting player (the AI), double it, and add that to the score
+	-- 4. Then reduce it by multiplying it by a multiplier based on affinity devotion
+	--    - AffinityDevotion (see Leaders table) of 7 or higher is 100%, so no effect
+	--    - Lower than that can be 50% or 75%
+	if (affinityDiffersScore > 30) then
 		reactionInfo = GameInfo.Reactions["REACTION_AFFINITY_DIFFERS_CONFRONTATION"];	
-	elseif (affinityDiffersScore > 25) then
+	elseif (affinityDiffersScore > 20) then
+	-- === END MOD ===
 		reactionInfo = GameInfo.Reactions["REACTION_AFFINITY_DIFFERS_WARNING"];	
 	end
 
