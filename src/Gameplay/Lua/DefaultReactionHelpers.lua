@@ -38,6 +38,17 @@ local OUTPOST_ALARM_DIST : number = 10;
 -- Outpost Founded
 function DefaultHandler_OutpostFounded(traitScript : CvPersonalityTraitScript, playerType : number, factType : number, factID : number, wasAdded : boolean)
 
+	-- === BEGIN MOD: Block reaction ===
+	--
+	-- In this mod we want to remove all reactions except for affinity
+	--
+	-- We have to wrap the return in an if statement, otherwise Lua throws an error
+	-- because it wants return to be followed by end
+	if true then
+		return;
+	end
+	-- === END MOD ===
+
 	local fact : object = GetAIFactObject(playerType, factID);
 	if (fact == nil) then
 		error("Could not retrieve fact object");
@@ -77,6 +88,12 @@ g_DefaultHandlersTable["AIFACT_OUTPOST_FOUNDED"] = DefaultHandler_OutpostFounded
 -----------------------------------------------------------------------------------
 -- Wonder Built
 function DefaultHandler_BuiltWonder(traitScript : CvPersonalityTraitScript, playerType : number, factType : number, factID : number, wasAdded : boolean)
+	-- === BEGIN MOD: Block reaction ===
+	if true then
+		return;
+	end
+	-- === END MOD ===
+
 	local fact : object = GetAIFactObject(playerType, factID);
 	if (fact == nil) then
 		error("Could not retrieve fact object");
@@ -266,6 +283,11 @@ function DefaultHandler_AgreementMade(traitScript : CvPersonalityTraitScript, pl
 	if (destPlayerType == traitScript.Owner) then
 		reactionInfo = GameInfo.Reactions["REACTION_AGREEMENT_MADE_LIKE"];
 	else
+		-- === BEGIN MOD: Block reaction ===
+		if true then
+			return;
+		end
+		-- === END MOD ===
 		local relationship : number = Game.GetRelationship(traitScript.Owner, destPlayerType);
 		if (relationship > RelationshipLevels.RELATIONSHIP_NEUTRAL) then
 			-- They made an agreement with one of my friends
@@ -285,6 +307,11 @@ g_DefaultHandlersTable["AIFACT_AGREEMENT_MADE"] = DefaultHandler_AgreementMade;
 -----------------------------------------------------------------------------------
 -- Agreement Cancelled
 function DefaultHandler_AgreementCancelled(traitScript : CvPersonalityTraitScript, playerType : number, factType : number, factID : number, wasAdded : boolean)
+	-- === BEGIN MOD: Block reaction ===
+	if true then
+		return;
+	end
+	-- === END MOD ===
 
 	local fact : object = GetAIFactObject(playerType, factID);
 	if (fact == nil) then
@@ -373,6 +400,11 @@ function DefaultHandler_WarEstablished(traitScript : CvPersonalityTraitScript, p
 	if (traitPlayer:GetTeam() == destTeamType) then
 		reactionInfo = GameInfo.Reactions["REACTION_WAR_ESTABLISHED_DISLIKE"];
 	else
+		-- === BEGIN MOD: Block reaction ===
+		if true then
+			return;
+		end
+		-- === END MOD ===
 		-- Count the number of friends and enemies on the team that war has been declared on
 		local enemiesOnTeam : number = 0;
 		local friendsOnTeam : number = 0;
@@ -413,6 +445,11 @@ g_DefaultHandlersTable["AIFACT_WAR_ESTABLISHED"] = DefaultHandler_WarEstablished
 -----------------------------------------------------------------------------------
 -- Peace Established
 function DefaultHandler_PeaceEstablished(traitScript : CvPersonalityTraitScript, playerType : number, factType : number, factID : number, wasAdded : boolean)
+	-- === BEGIN MOD: Block reaction ===
+	if true then
+		return;
+	end
+	-- === END MOD ===
 
 	local fact : object = GetAIFactObject(playerType, factID);
 	if (fact == nil) then
@@ -482,6 +519,12 @@ g_DefaultHandlersTable["AIFACT_PEACE_ESTABLISHED"] = DefaultHandler_PeaceEstabli
 -----------------------------------------------------------------------------------
 -- Aggressive Expansion
 function DefaultHandler_AggressiveExpansion(traitScript : CvPersonalityTraitScript, playerType : number, factType : number, factID : number, wasAdded : boolean)
+	-- === BEGIN MOD: Block reaction ===
+	if true then
+		return;
+	end
+	-- === END MOD ===
+
 	if (wasAdded) then
 		return;
 	end
@@ -525,6 +568,12 @@ g_DefaultHandlersTable["AIFACT_AGGRESSIVE_EXPANSION"] = DefaultHandler_Aggressiv
 -----------------------------------------------------------------------------------
 -- Aggressive Military
 function DefaultHandler_AggressiveMilitary(traitScript : CvPersonalityTraitScript, playerType : number, factType : number, factID : number, wasAdded : boolean)
+	-- === BEGIN MOD: Block reaction ===
+	if true then
+		return;
+	end
+	-- === END MOD ===
+
 	if (wasAdded) then
 		return;
 	end
@@ -652,6 +701,12 @@ g_DefaultHandlersTable["AIFACT_WAS_VICTIM_OF_BOMBSHELL_COVERT_OP"] = DefaultHand
 -----------------------------------------------------------------------------------
 -- Aggressive Orbital Units
 function DefaultHandler_AggressiveOrbitalUnitDetected(traitScript : CvPersonalityTraitScript, playerType : number, factType : number, factID : number, wasAdded : boolean)
+	-- === BEGIN MOD: Block reaction ===
+	if true then
+		return;
+	end
+	-- === END MOD ===
+
 	if (wasAdded) then
 		return;
 	end
@@ -769,6 +824,12 @@ function DefaultHandler_RelationshipChanged(traitScript : CvPersonalityTraitScri
 				reactionInfo = GameInfo.Reactions["REACTION_REALTIONSHIP_DEGRADED_WITH_ME"];
 			end
 		else
+			-- === BEGIN MOD: Block reaction ===
+			if true then
+				return;
+			end
+			-- === END MOD ===
+
 			--local myRelationshipWithTarget : number = Game.GetRelationship(traitScript.Owner, targetPlayerType);
 
 			local DoRelationshipReaction : ifunction = function(playerAType : number, playerBType : number)
