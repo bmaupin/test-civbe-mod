@@ -84,6 +84,7 @@
       <UpdateDatabase>SQL/HandicapInfos.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Leaders.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Quests.sql</UpdateDatabase>
+      <UpdateDatabase>SQL/Reactions.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Technology_Affinities.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Units.sql</UpdateDatabase>
       <UpdateDatabase>SQL/UnitUpgrades.sql</UpdateDatabase>
