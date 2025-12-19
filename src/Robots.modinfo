@@ -66,6 +66,7 @@
     <File md5="00ac89a40571bec3c43114dfb9e2e5b9" import="0">SQL/HandicapInfos.sql</File>
     <File md5="572e9bbb128a502e75767dcee5da1cb0" import="0">SQL/Leaders.sql</File>
     <File md5="01bfef4bf617d0c754ed0d50c4086411" import="0">SQL/Quests.sql</File>
+    <File md5="1244951ef0a6e997d4125257ab10c4e1" import="0">SQL/Reactions.sql</File>
     <File md5="223276e4dae76f308b2a515a5bb58e67" import="0">SQL/Technology_Affinities.sql</File>
     <File md5="60c4bfa3371228366562e0c2d8ed2fce" import="0">SQL/Units.sql</File>
     <File md5="39512924c8ded7c76a30f3e9e0e30fea" import="0">SQL/UnitUpgrades.sql</File>
