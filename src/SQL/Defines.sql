@@ -10,3 +10,18 @@ WHERE Name IN
   'OPINION_WEIGHT_AFFINITY_ALIGNED_MIN_PERCENT_TOWARDS_MAX_LEVEL',
   'OPINION_WEIGHT_AFFINITY_DIFFERS_MIN_PERCENT_TOWARDS_MAX_LEVEL'
 );
+
+-- TODO: Testing
+-- Effectively disables agreements, which are annoying because they constantly pop up
+UPDATE Defines
+SET Value = 0
+WHERE Name = 'DIPLO_MAX_AGREEMENTS';
+  -- TODO: remove trait max level nerf
+  -- OR Name = 'DIPLO_TRAIT_MAX_LEVELS';
+
+-- Effectively disable non-unique personality traits; they're annoying because civs will
+-- change respect for seemingly arbitrary reasons, but we want respect to be aligned with
+-- affinity instead
+UPDATE Defines
+SET Value = 999999
+WHERE Name = 'DIPLO_TRAIT_LEVEL_BASE_COST';
