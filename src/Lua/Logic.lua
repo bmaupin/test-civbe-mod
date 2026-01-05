@@ -109,7 +109,36 @@ end
 -- Run this once at the start of the game
 Events.SequenceGameInitComplete.Add(InitialisePermanentPeace);
 
--- -- Uncomment for autoplay until war is unlocked
+-- Block non-affinity combat units once war is unlocked
+GameEvents.CityCanTrain.Add(function(playerID, _cityID, unitID)
+    local player = Players[playerID];
+    if not player or not player:IsEverAlive() or player:IsMinorCiv() or player:IsAlien() then
+        return true;
+    end
+
+    if not IsWarUnlocked() then
+        return true;
+    end
+
+    local NON_AFFINITY_UNITS = {
+        [GameInfo.Units["UNIT_AQUILON"].ID] = true,
+        [GameInfo.Units["UNIT_CAVALRY"].ID] = true,
+        [GameInfo.Units["UNIT_GELIOPOD"].ID] = true,
+        [GameInfo.Units["UNIT_MARINE"].ID] = true,
+        [GameInfo.Units["UNIT_NANOHIVE"].ID] = true,
+        [GameInfo.Units["UNIT_RANGED_MARINE"].ID] = true,
+        [GameInfo.Units["UNIT_SIEGE"].ID] = true,
+    };
+
+    if NON_AFFINITY_UNITS[unitID] then
+        print("(Robots) Blocking non-affinity combat unit:", GameInfo.Units[unitID].Type);
+        return false;
+    end
+
+    return true;
+end);
+
+-- Uncomment for autoplay until war is unlocked
 -- local function AutoPlay()
 --     print("(Robots) AutoPlay()");
 --     -- First parameter is number of turns to autoplay, second is player to return control to (or -1 for none)
@@ -204,9 +233,8 @@ Events.SequenceGameInitComplete.Add(InitialisePermanentPeace);
 -- -- Run this once at the start of the game
 -- Events.SequenceGameInitComplete.Add(AutoPlay);
 
--- -- Fires whenever a city is founded
+-- -- Log city count every time a city is founded for testing purposes
 -- local function OnPlayerCityFounded(playerID, x, y)
---     -- Utility: count total cities in the game
 --     local function GetTotalCityCount()
 --         local totalCities = 0;
 
