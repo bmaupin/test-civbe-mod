@@ -71,6 +71,7 @@
     <File md5="223276e4dae76f308b2a515a5bb58e67" import="0">SQL/Technology_Affinities.sql</File>
     <File md5="60c4bfa3371228366562e0c2d8ed2fce" import="0">SQL/Units.sql</File>
     <File md5="39512924c8ded7c76a30f3e9e0e30fea" import="0">SQL/UnitUpgrades.sql</File>
+    <File md5="ffd84e384af58d3edceef3b85853cb2b" import="0">SQL/Victories.sql</File>
     <File md5="5e98f679467d5361dcb7641739fcb0aa" import="1">UI/InGame/TechTree/TechTree.lua</File>
     <File md5="6e8abd0cefb6d27b234abd0b13c2cb54" import="1">UI/InGame/Popups/UnitUpgradePopup.lua</File>
     <File md5="d7a8d917440a24b84ef9c5d3b551a685" import="1">UI/InGame/Popups/UnitUpgradePopup.xml</File>
@@ -90,6 +91,7 @@
       <UpdateDatabase>SQL/Technology_Affinities.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Units.sql</UpdateDatabase>
       <UpdateDatabase>SQL/UnitUpgrades.sql</UpdateDatabase>
+      <UpdateDatabase>SQL/Victories.sql</UpdateDatabase>
       <UpdateDatabase>XML/Language_en_US.xml</UpdateDatabase>
     </OnModActivated>
   </Actions>
