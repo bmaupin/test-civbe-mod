@@ -87,13 +87,18 @@ local function CheckWarUnlock(playerID)
 end
 GameEvents.PlayerDoTurn.Add(CheckWarUnlock);
 
-local function PossiblyForcePeace(teamA, teamB)
-    if not IsWarUnlocked() then
+local function ForcePeaceOrWar(teamA, teamB)
+    -- If war is declared and unlocked, force permanent war
+    if IsWarUnlocked() then
+        print("(Robots) Re-enabling permanent war between", teamA, "and", teamB);
+        Teams[teamA]:SetPermanentWarPeace(teamB, true);
+    -- If war is declared an not unlocked, cancel the war to force peace
+    else
         print("(Robots) Cancelling war between", teamA, "and", teamB);
         Teams[teamA]:MakePeace(teamB);
     end
 end
-GameEvents.TeamsDeclaredWar.Add(PossiblyForcePeace);
+GameEvents.TeamsDeclaredWar.Add(ForcePeaceOrWar);
 
 local function InitialisePermanentPeace()
     for teamID, team in pairs(activeTeams) do
