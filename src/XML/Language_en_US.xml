@@ -73,5 +73,16 @@
         <Row Tag="TXT_KEY_LEADER_ROBOT3_DESC">
             <Text>Suzanne Zar’Neth</Text>
         </Row>
+        <Delete Tag="TXT_KEY_DIPLO_CONFRONT_DIFFERENCE_CHUNGSU_DEFAULT_1" />
+        <Row Tag="TXT_KEY_DIPLO_CONFRONT_DIFFERENCE_CHUNGSU_DEFAULT_1">
+            <Text>In the time it's taken to communicate this message, I have constructed 1048576 different algorithms for your elimination.</Text>
+        </Row>
+        <Delete Tag="TXT_KEY_DIPLO_CONFRONT_DIFFERENCE_INTEGR_DEFAULT_1" />
+        <Row Tag="TXT_KEY_DIPLO_CONFRONT_DIFFERENCE_INTEGR_DEFAULT_1">
+            <Text>(The room starts to vibrate, subtly at first, but soon you and your colleagues begin to bleed from the ears)</Text>
+        </Row>
+        <Row Tag="TXT_KEY_REACTION_AFFINITY_DIFFERS_WARNING_GENERIC">
+            <Text>Your species is inferior and we are beginning to tire of your presence on this planet.</Text>
+        </Row>
     </Language_en_US>
 </GameData>
