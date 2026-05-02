@@ -1,3 +1,26 @@
+-- Disable naval and air units
+INSERT INTO Civilization_UnitClassOverrides (CivilizationType, UnitClassType, UnitType)
+SELECT Civilizations.Type, UnitClasses.Type, NULL
+FROM Civilizations
+CROSS JOIN UnitClasses
+JOIN Units ON UnitClasses.Type = Units.Class
+WHERE Civilizations.Playable = 1
+  AND (
+    Units.Domain = 'DOMAIN_AIR'
+    OR Units.Domain = 'DOMAIN_SEA'
+  );
+
+-- Disable water cities
+-- Source: https://steamcommunity.com/sharedfiles/filedetails/?id=537716976
+UPDATE Terrains
+SET Found = 0
+WHERE Type = 'TERRAIN_COAST';
+
+-- Disable water starts
+UPDATE Civilization_Start_In_Water
+SET Start = 0;
+
+
 -- Disable these units from all civilisations
 INSERT INTO Civilization_UnitClassOverrides (CivilizationType, UnitClassType, UnitType)
 SELECT Civilizations.Type, UnitClasses.Type, NULL
