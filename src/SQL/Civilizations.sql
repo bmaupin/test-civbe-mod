@@ -49,3 +49,11 @@ SET
     ShortDescription = 'TXT_KEY_CIV_ALIEN2_SHORT_DESC',
     Adjective = 'TXT_KEY_CIV_ALIEN2_ADJECTIVE'
 WHERE Type = 'CIVILIZATION_RUSSIA';
+
+
+
+-- TODO: Delete alien civilisations for now
+DELETE FROM Civilizations
+WHERE Type = 'CIVILIZATION_FRANCO_IBERIA'
+  OR Type = 'CIVILIZATION_POLYSTRALIA'
+  OR Type = 'CIVILIZATION_RUSSIA';
