@@ -143,6 +143,51 @@ GameEvents.CityCanTrain.Add(function(playerID, _cityID, unitID)
     return true;
 end);
 
+-- Adjust respect up or down depending if the faction has the same affinity
+--
+-- This is to avoid same-affinity factions declaring war, or different affinity factions
+-- from cooperating, especially early in the game especially when affinity levels are low.
+-- This will result in about a plus or minus 2 adjustment to respect
+local function AdjustRespect(playerID)
+    local runThisOnTurn = 10;
+
+    if Game.GetGameTurn() > runThisOnTurn then
+        GameEvents.PlayerDoTurn.Remove(AdjustRespect);
+    end
+
+    if Game.GetGameTurn() < runThisOnTurn then
+        return;
+    end
+
+    local player = Players[playerID];
+    if not player or not player:IsEverAlive() or player:IsMinorCiv() or player:IsAlien() then
+        return;
+    end
+
+    for i = 0, GameDefines.MAX_MAJOR_CIVS - 1 do
+        local otherPlayer = Players[i];
+        if otherPlayer and playerID ~= otherPlayer:GetID() and otherPlayer:IsEverAlive() and not otherPlayer:IsAlien() and not otherPlayer:IsMinorCiv() then
+            if (
+                (player:CanEverResearch(GameInfo.Technologies["TECH_ALIEN_EVOLUTION"].ID)
+                    and not otherPlayer:CanEverResearch(GameInfo.Technologies["TECH_ALIEN_EVOLUTION"].ID)) or
+                (player:CanEverResearch(GameInfo.Technologies["TECH_TACTICAL_LEV"].ID)
+                    and not otherPlayer:CanEverResearch(GameInfo.Technologies["TECH_TACTICAL_LEV"].ID)) or
+                (player:CanEverResearch(GameInfo.Technologies["TECH_NEURAL_UPLOADING"].ID)
+                    and not otherPlayer:CanEverResearch(GameInfo.Technologies["TECH_NEURAL_UPLOADING"].ID))
+                ) then
+                print("(Robots) Degrading relationship between " .. player:GetName() .. " and " .. otherPlayer:GetName());
+                local reactionInfo = GameInfo.Reactions["REACTION_RELATIONSHIP_DEGRADED_WITH_ME"];
+                player:SendReaction(reactionInfo.ID, otherPlayer:GetID());
+            else
+                print("(Robots) Improving relationship between " .. player:GetName() .. " and " .. otherPlayer:GetName());
+                local reactionInfo = GameInfo.Reactions["REACTION_RELATIONSHIP_IMPROVED_WITH_ME"];
+                player:SendReaction(reactionInfo.ID, otherPlayer:GetID());
+            end
+        end
+    end
+end
+GameEvents.PlayerDoTurn.Add(AdjustRespect);
+
 -- Uncomment for autoplay until war is unlocked
 -- local function AutoPlay()
 --     print("(Robots) AutoPlay()");
