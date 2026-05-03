@@ -3,7 +3,7 @@ local function GetActiveNonAlienTeams()
     local list = {};
     local seen = {};
 
-    -- I'm not completely sure IsAlien() actually works, but by limiting to max major civs
+    -- IsAlien() doesn't actually seem to work, but by limiting to max major civs
     -- we should be safe and this is what the game code does
     for i = 0, GameDefines.MAX_MAJOR_CIVS - 1 do
         local player = Players[i];
@@ -149,10 +149,12 @@ end);
 -- from cooperating, especially early in the game especially when affinity levels are low.
 -- This will result in about a plus or minus 2 adjustment to respect
 local function AdjustRespect(playerID)
+    -- This needs to happen fairly early; AI can request cooperation as early as turn 20
     local runThisOnTurn = 10;
 
     if Game.GetGameTurn() > runThisOnTurn then
         GameEvents.PlayerDoTurn.Remove(AdjustRespect);
+        return;
     end
 
     if Game.GetGameTurn() < runThisOnTurn then
@@ -160,16 +162,19 @@ local function AdjustRespect(playerID)
     end
 
     local player = Players[playerID];
-    if not player or not player:IsEverAlive() or player:IsMinorCiv() or player:IsAlien() then
+    if not player or not player:IsEverAlive() or player:IsMinorCiv() then
         return;
     end
 
     for i = 0, GameDefines.MAX_MAJOR_CIVS - 1 do
         local otherPlayer = Players[i];
-        if otherPlayer and playerID ~= otherPlayer:GetID() and otherPlayer:IsEverAlive() and not otherPlayer:IsAlien() and not otherPlayer:IsMinorCiv() then
+        if otherPlayer and playerID ~= otherPlayer:GetID() and otherPlayer:IsEverAlive() and not otherPlayer:IsMinorCiv() then
             if (
                 (player:CanEverResearch(GameInfo.Technologies["TECH_ALIEN_EVOLUTION"].ID)
-                    and not otherPlayer:CanEverResearch(GameInfo.Technologies["TECH_ALIEN_EVOLUTION"].ID)) or
+                    and (not otherPlayer:CanEverResearch(GameInfo.Technologies["TECH_ALIEN_EVOLUTION"].ID)
+                        -- Aliens (player:IsAlien() doesn't seem to work)
+                        or playerID == 63)
+                    ) or
                 (player:CanEverResearch(GameInfo.Technologies["TECH_TACTICAL_LEV"].ID)
                     and not otherPlayer:CanEverResearch(GameInfo.Technologies["TECH_TACTICAL_LEV"].ID)) or
                 (player:CanEverResearch(GameInfo.Technologies["TECH_NEURAL_UPLOADING"].ID)
