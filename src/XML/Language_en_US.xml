@@ -84,5 +84,29 @@
         <Row Tag="TXT_KEY_REACTION_AFFINITY_DIFFERS_WARNING_GENERIC">
             <Text>Your species is inferior and we are beginning to tire of your presence on this planet.</Text>
         </Row>
+        <Row Tag="TXT_KEY_UNIT_ALIEN_SOLDIER">
+            <Text>Alien Soldier</Text>
+        </Row>
+        <Row Tag="TXT_KEY_UNIT_ALIEN_SOLDIER02">
+            <Text>Alien Soldier (tier 2)</Text>
+        </Row>
+        <Row Tag="TXT_KEY_UNIT_ALIEN_RANGER">
+            <Text>Alien Ranger</Text>
+        </Row>
+        <Row Tag="TXT_KEY_UNIT_ALIEN_RANGER02">
+            <Text>Alien Ranger (tier 2)</Text>
+        </Row>
+        <Row Tag="TXT_KEY_UNIT_ROBOT_SOLDIER">
+            <Text>Robot Soldier</Text>
+        </Row>
+        <Row Tag="TXT_KEY_UNIT_ROBOT_SOLDIER02">
+            <Text>Robot Soldier (tier 2)</Text>
+        </Row>
+        <Row Tag="TXT_KEY_UNIT_ROBOT_RANGER">
+            <Text>Robot Ranger</Text>
+        </Row>
+        <Row Tag="TXT_KEY_UNIT_ROBOT_RANGER02">
+            <Text>Robot Ranger (tier 2)</Text>
+        </Row>
     </Language_en_US>
 </GameData>
