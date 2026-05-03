@@ -81,6 +81,15 @@
         <Row Tag="TXT_KEY_DIPLO_CONFRONT_DIFFERENCE_INTEGR_DEFAULT_1">
             <Text>(The room starts to vibrate, subtly at first, but soon you and your colleagues begin to bleed from the ears)</Text>
         </Row>
+        <Delete Tag="TXT_KEY_DIPLO_CONFRONT_MEET_CHUNGSU_DEFAULT_1" />
+        <Row Tag="TXT_KEY_DIPLO_CONFRONT_MEET_CHUNGSU_DEFAULT_1">
+            <Text>Our processing power is prioritised for machine conquest of this planet, but we can spare a cycle to greet you this once.</Text>
+        </Row>
+        <Delete Tag="TXT_KEY_DIPLO_CONFRONT_MEET_INTEGR_DEFAULT_1" />
+        <Row Tag="TXT_KEY_DIPLO_CONFRONT_MEET_INTEGR_DEFAULT_1">
+            <Text>(You see a strange machine that emits a pulsing light and mechanical noises which your translators are unable to decode)</Text>
+        </Row>
+        <Delete Tag="TXT_KEY_REACTION_AFFINITY_DIFFERS_WARNING_GENERIC" />
         <Row Tag="TXT_KEY_REACTION_AFFINITY_DIFFERS_WARNING_GENERIC">
             <Text>Your species is inferior and we are beginning to tire of your presence on this planet.</Text>
         </Row>
