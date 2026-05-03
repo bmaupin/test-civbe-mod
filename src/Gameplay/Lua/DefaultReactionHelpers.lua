@@ -42,6 +42,11 @@ function DefaultHandler_OutpostFounded(traitScript : CvPersonalityTraitScript, p
 	--
 	-- In this mod we want to remove all reactions except for affinity
 	--
+	-- NOTE: For many of these we could simply delete the reaction from the database; that
+	--       seems to be enough to stop the reaction dialogue and hit to respect. However,
+	--       we already need to modify this file for affinity differs reaction in
+	--       particular, so we might as well keep everything in one place.
+	--
 	-- We have to wrap the return in an if statement, otherwise Lua throws an error
 	-- because it wants return to be followed by end
 	if true then
