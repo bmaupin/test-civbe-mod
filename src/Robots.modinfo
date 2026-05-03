@@ -60,8 +60,7 @@
     <File md5="36e209c5a475af02421605ce58f637bb" import="1">Art/Robot2_Scene.xml</File>
     <File md5="42d9625ca6cc86b9d0a4fb08df7d3bcf" import="1">Gameplay/Lua/AssignStartingPlots.lua</File>
     <File md5="451f3bd4d847350cc58d96b38392f4bd" import="0">Lua/Logic.lua</File>
-    <File md5="19a67cda2dddf313cdfa4cc4f79b9c6a" import="0">SQL/Civilizations.sql</File>
-    <File md5="30e5b3a13baa5ff35abb33d94eacad7d" import="0">SQL/Civilization_DisableTechs.sql</File>
+    <File md5="e3ccede5057e58e9eb34a8c8ba101684" import="0">SQL/Civilizations.sql</File>
     <File md5="f8ad6ed023b2e13b7be29183b8e45ac0" import="0">SQL/Defines.sql</File>
     <File md5="950daf32d251ebecd86e45e9b5c34329" import="0">SQL/GameOptions.sql</File>
     <File md5="00ac89a40571bec3c43114dfb9e2e5b9" import="0">SQL/HandicapInfos.sql</File>
@@ -80,8 +79,9 @@
   <Actions>
     <OnModActivated>
       <UpdateDatabase>Art/IconTextureAtlases.xml</UpdateDatabase>
+      <!-- This needs to come before changes in Civilizations.sql -->
+      <UpdateDatabase>SQL/Technologies.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Civilizations.sql</UpdateDatabase>
-      <UpdateDatabase>SQL/Civilization_DisableTechs.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Defines.sql</UpdateDatabase>
       <UpdateDatabase>SQL/GameOptions.sql</UpdateDatabase>
       <UpdateDatabase>SQL/HandicapInfos.sql</UpdateDatabase>
