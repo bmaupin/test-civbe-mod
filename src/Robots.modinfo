@@ -66,6 +66,7 @@
     <File md5="950daf32d251ebecd86e45e9b5c34329" import="0">SQL/GameOptions.sql</File>
     <File md5="00ac89a40571bec3c43114dfb9e2e5b9" import="0">SQL/HandicapInfos.sql</File>
     <File md5="329bbab96dbf88ac70933ae1ee626bd4" import="0">SQL/Leaders.sql</File>
+    <File md5="00c2152d09ef395f0bf93594872a922a" import="0">SQL/MapScripts.sql</File>
     <File md5="01bfef4bf617d0c754ed0d50c4086411" import="0">SQL/Quests.sql</File>
     <File md5="107c75376e2ede9a078683b82da834ae" import="0">SQL/Reactions.sql</File>
     <File md5="223276e4dae76f308b2a515a5bb58e67" import="0">SQL/Technologies.sql</File>
@@ -88,6 +89,7 @@
       <UpdateDatabase>SQL/GameOptions.sql</UpdateDatabase>
       <UpdateDatabase>SQL/HandicapInfos.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Leaders.sql</UpdateDatabase>
+      <UpdateDatabase>SQL/MapScripts.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Quests.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Reactions.sql</UpdateDatabase>
       <UpdateDatabase>SQL/Units.sql</UpdateDatabase>
