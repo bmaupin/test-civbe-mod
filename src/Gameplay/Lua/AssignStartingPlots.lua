@@ -4375,7 +4375,7 @@ function AssignStartingPlots:CreateResources(fertilityMap : table)
 	--
 	-- This change might be better placed in Mini Beyond Earth itself but that mod avoids
 	-- overriding game files as much as possible for maximum compatibility, whereas this
-	-- modis already so game-breaking that it doesn't have that same design constraint.
+	-- mod is already so game-breaking that it doesn't have that same design constraint.
 	if self.resource_setting == 5 or isMiniBeyondEarthModEnabled then
 	-- === END MOD ===
 		local strategic = {};
@@ -4383,7 +4383,8 @@ function AssignStartingPlots:CreateResources(fertilityMap : table)
 		for resInfo in GameInfo.Resources() do
 			if(resInfo.ResourceClassType == GameInfo.ResourceClasses["RESOURCECLASS_STRATEGIC"].Type ) then
 				-- === BEGIN MOD: If Mini Beyond Earth is enabled, add affinity resources as well ===
-				if (resInfo.Affinity == false or isMiniBeyondEarthModEnabled) then
+				if ((self.resource_setting == 5 and resInfo.Affinity == false) or
+					(isMiniBeyondEarthModEnabled and (resInfo.Affinity == true or resInfo.Type == "RESOURCE_TITANIUM"))) then
 				-- === END MOD ===
 					table.insert(strategic, resInfo.ID);
 					resourceCount = resourceCount + 1;
