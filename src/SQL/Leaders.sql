@@ -3,6 +3,8 @@
 UPDATE Leaders
 SET
   AffinityDevotion = 12,
+  -- "Generally, Purity Purity players should pursue extermination, Harmony Harmony players should pursue co-existence, and Supremacy Supremacy players should do what suits their situation."
+  -- https://civilization.fandom.com/wiki/Aliens_(CivBE)
   AntiAlien = 12,
   WarmongerHate = 0
 WHERE Type != 'LEADER_ALIEN';
@@ -29,6 +31,7 @@ WHERE LeaderType != 'LEADER_ALIEN';
 
 UPDATE Leaders
 SET
+  AntiAlien = 5,
   Description = 'TXT_KEY_LEADER_ROBOT3_DESC'
 WHERE Type = 'LEADER_ARC';
 
@@ -36,14 +39,15 @@ WHERE Type = 'LEADER_ARC';
 
 UPDATE Leaders
 SET
+  AntiAlien = 5,
   ArtDefineTag = 'Robot1_Scene.xml',
-  Description = 'TXT_KEY_LEADER_ROBOT1_DESC',
-  IconAtlas = 'ROBOT1_LEADER_ATLAS',
-  PortraitIndex = 0,
   Chattiness = 5,
   CoopWillingness = 0,
+  Description = 'TXT_KEY_LEADER_ROBOT1_DESC',
+  IconAtlas = 'ROBOT1_LEADER_ATLAS',
   Meanness = 12,
-  Neediness = 0
+  Neediness = 0,
+  PortraitIndex = 0
 WHERE Type = 'LEADER_CHUNGSU';
 
 -- https://civilization.fandom.com/wiki/AI_trait_(Civ5)
@@ -64,8 +68,8 @@ WHERE LeaderType = 'LEADER_CHUNGSU';
 
 UPDATE Leaders
 SET
-  Description = 'TXT_KEY_LEADER_ALIEN3_DESC',
-  AntiAlien = 0
+  AntiAlien = 0,
+  Description = 'TXT_KEY_LEADER_ALIEN3_DESC'
 WHERE Type = 'LEADER_FRANCO_IBERIA';
 
 UPDATE Leader_CondemnationBiases
@@ -77,13 +81,14 @@ WHERE LeaderType = 'LEADER_FRANCO_IBERIA'
 
 UPDATE Leaders
 SET
+  AntiAlien = 5,
   ArtDefineTag = 'Robot2_Scene.xml',
-  Description = 'TXT_KEY_LEADER_ROBOT2_DESC',
-  IconAtlas = 'ROBOT2_LEADER_ATLAS',
-  PortraitIndex = 0,
   Chattiness = 0,
   CoopWillingness = 0,
-  Neediness = 0
+  Description = 'TXT_KEY_LEADER_ROBOT2_DESC',
+  IconAtlas = 'ROBOT2_LEADER_ATLAS',
+  Neediness = 0,
+  PortraitIndex = 0
 WHERE Type = 'LEADER_INTEGR';
 
 UPDATE Leader_MajorCivApproachBiases
@@ -102,14 +107,14 @@ WHERE LeaderType = 'LEADER_INTEGR';
 
 UPDATE Leaders
 SET
-  ArtDefineTag = 'Alien1_Scene.xml',
-  Description = 'TXT_KEY_LEADER_ALIEN1_DESC',
-  IconAtlas = 'ALIEN1_LEADER_ATLAS',
-  PortraitIndex = 0,
   AntiAlien = 0,
+  ArtDefineTag = 'Alien1_Scene.xml',
   Chattiness = 0,
   CoopWillingness = 0,
-  Neediness = 0
+  Description = 'TXT_KEY_LEADER_ALIEN1_DESC',
+  IconAtlas = 'ALIEN1_LEADER_ATLAS',
+  Neediness = 0,
+  PortraitIndex = 0
 WHERE Type = 'LEADER_POLYSTRALIA';
 
 UPDATE Leader_MajorCivApproachBiases
@@ -133,14 +138,14 @@ WHERE LeaderType = 'LEADER_POLYSTRALIA'
 
 UPDATE Leaders
 SET
-  ArtDefineTag = 'Alien2_Scene.xml',
-  Description = 'TXT_KEY_LEADER_ALIEN2_DESC',
-  IconAtlas = 'ALIEN2_LEADER_ATLAS',
-  PortraitIndex = 0,
   AntiAlien = 0,
+  ArtDefineTag = 'Alien2_Scene.xml',
   Chattiness = 0,
   CoopWillingness = 0,
-  Neediness = 0
+  Description = 'TXT_KEY_LEADER_ALIEN2_DESC',
+  IconAtlas = 'ALIEN2_LEADER_ATLAS',
+  Neediness = 0,
+  PortraitIndex = 0
 WHERE Type = 'LEADER_RUSSIA';
 
 UPDATE Leader_MajorCivApproachBiases
