@@ -61,7 +61,7 @@
     <File md5="42d9625ca6cc86b9d0a4fb08df7d3bcf" import="1">Gameplay/Lua/AssignStartingPlots.lua</File>
     <File md5="9607d5c49f4c43f8f0e9471b4c32f163" import="0">Lua/Logic.lua</File>
     <File md5="89e7d61505668562f004bc42ade0121c" import="0">SQL/Builds.sql</File>
-    <File md5="e3ccede5057e58e9eb34a8c8ba101684" import="0">SQL/Civilizations.sql</File>
+    <File md5="d242d50de7b1e52f181bc4306770102d" import="0">SQL/Civilizations.sql</File>
     <File md5="f8ad6ed023b2e13b7be29183b8e45ac0" import="0">SQL/Defines.sql</File>
     <File md5="950daf32d251ebecd86e45e9b5c34329" import="0">SQL/GameOptions.sql</File>
     <File md5="00ac89a40571bec3c43114dfb9e2e5b9" import="0">SQL/HandicapInfos.sql</File>

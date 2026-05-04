@@ -52,8 +52,11 @@ WHERE Type = 'CIVILIZATION_RUSSIA';
 
 
 
--- TODO: Delete alien civilisations for now
-DELETE FROM Civilizations
+-- TODO: Make alien civilisations unplayable for now
+UPDATE Civilizations
+SET
+  AIPlayable = 0,
+  Playable = 0
 WHERE Type = 'CIVILIZATION_FRANCO_IBERIA'
   OR Type = 'CIVILIZATION_POLYSTRALIA'
   OR Type = 'CIVILIZATION_RUSSIA';
