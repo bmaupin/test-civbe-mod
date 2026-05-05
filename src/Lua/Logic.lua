@@ -149,8 +149,8 @@ end);
 -- from cooperating, especially early in the game especially when affinity levels are low.
 -- This will result in about a plus or minus 2 adjustment to respect
 local function AdjustRespect(playerID)
-    -- This needs to happen fairly early; AI can request cooperation as early as turn 20
-    local runThisOnTurn = 10;
+    -- This needs to happen fairly early; AI can request cooperation as early as turn 10
+    local runThisOnTurn = 5;
 
     if Game.GetGameTurn() > runThisOnTurn then
         GameEvents.PlayerDoTurn.Remove(AdjustRespect);
