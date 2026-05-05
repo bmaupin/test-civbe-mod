@@ -69,29 +69,44 @@ end
 -------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------
-function GetMapInitData(worldSize)
-	-- This function can reset map grid sizes or world wrap settings.
-	--
-	-- Ice Age simulates polar ice taking over more of the world, so we use a "flatter" grid.
-	local worldsizes = {
-		[GameInfo.Worlds.WORLDSIZE_DUEL.ID] = {44, 18},
-		[GameInfo.Worlds.WORLDSIZE_TINY.ID] = {56, 24},
-		[GameInfo.Worlds.WORLDSIZE_SMALL.ID] = {70, 30},
-		[GameInfo.Worlds.WORLDSIZE_STANDARD.ID] = {92, 38},
-		[GameInfo.Worlds.WORLDSIZE_LARGE.ID] = {116, 46},
-		--[GameInfo.Worlds.WORLDSIZE_HUGE.ID] = {128, 52}
-		}
-	local grid_size = worldsizes[worldSize];
-	--
-	local world = GameInfo.Worlds[worldSize];
-	if(world ~= nil) then
-		return {
-			Width = grid_size[1],
-			Height = grid_size[2],
-			WrapX = true
-		};      
+-- === BEGIN MOD: If Mini Beyond Earth is enabled, use map size from database instead of overriding map size ===
+function ModEnabledCheck(sModID)
+	for i,v in pairs(Modding.GetActivatedMods()) do
+		if sModID == v.ID then
+			return true;
+		end
 	end
+	return false;
 end
+local isMiniBeyondEarthModEnabled = ModEnabledCheck("9412c9bf-a7b2-481e-b42e-431f06aac221");
+if not isMiniBeyondEarthModEnabled then
+-- === END MOD ===
+	function GetMapInitData(worldSize)
+		-- This function can reset map grid sizes or world wrap settings.
+		--
+		-- Ice Age simulates polar ice taking over more of the world, so we use a "flatter" grid.
+		local worldsizes = {
+			[GameInfo.Worlds.WORLDSIZE_DUEL.ID] = {44, 18},
+			[GameInfo.Worlds.WORLDSIZE_TINY.ID] = {56, 24},
+			[GameInfo.Worlds.WORLDSIZE_SMALL.ID] = {70, 30},
+			[GameInfo.Worlds.WORLDSIZE_STANDARD.ID] = {92, 38},
+			[GameInfo.Worlds.WORLDSIZE_LARGE.ID] = {116, 46},
+			--[GameInfo.Worlds.WORLDSIZE_HUGE.ID] = {128, 52}
+			}
+		local grid_size = worldsizes[worldSize];
+		--
+		local world = GameInfo.Worlds[worldSize];
+		if(world ~= nil) then
+			return {
+				Width = grid_size[1],
+				Height = grid_size[2],
+				WrapX = true
+			};
+		end
+	end
+-- === BEGIN MOD ===
+end
+-- === END MOD ===
 -------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------
@@ -139,9 +154,11 @@ function GeneratePlotTypes()
 		local args = {
 			sea_level = sea_level,
 			world_age = world_age,
-			sea_level_low = 58,
-			sea_level_normal = 63,
-			sea_level_high = 69,
+			-- === BEGIN MOD: Lower sea levels ===
+			sea_level_low = 1,
+			sea_level_normal = 1,
+			sea_level_high = 1,
+			-- === END MOD ===
 			tectonic_islands = true
 			}
 		plotTypes = fractal_world:GeneratePlotTypes(args);
@@ -156,9 +173,11 @@ function GeneratePlotTypes()
 		local args = {
 			sea_level = sea_level,
 			world_age = world_age,
-			sea_level_low = 59,
-			sea_level_normal = 64,
-			sea_level_high = 70,
+			-- === BEGIN MOD: Lower sea levels ===
+			sea_level_low = 1,
+			sea_level_normal = 1,
+			sea_level_high = 1,
+			-- === END MOD ===
 			tectonic_islands = true
 			}
 		plotTypes = fractal_world:GeneratePlotTypes(args);
@@ -173,9 +192,11 @@ function GeneratePlotTypes()
 		local args = {
 			sea_level = sea_level,
 			world_age = world_age,
-			sea_level_low = 60,
-			sea_level_normal = 65,
-			sea_level_high = 71,
+			-- === BEGIN MOD: Lower sea levels ===
+			sea_level_low = 1,
+			sea_level_normal = 1,
+			sea_level_high = 1,
+			-- === END MOD ===
 			tectonic_islands = true
 			}
 		plotTypes = fractal_world:GeneratePlotTypes(args);
@@ -207,9 +228,11 @@ function GeneratePlotTypes()
 		local args = {
 			sea_level = sea_level,
 			world_age = world_age,
-			sea_level_low = 57,
-			sea_level_normal = 62,
-			sea_level_high = 67,
+			-- === BEGIN MOD: Lower sea levels ===
+			sea_level_low = 1,
+			sea_level_normal = 1,
+			sea_level_high = 1,
+			-- === END MOD ===
 			tectonic_islands = false
 			}
 		plotTypes = fractal_world:GeneratePlotTypes(args);

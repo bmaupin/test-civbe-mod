@@ -67,29 +67,44 @@ end
 ------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------
-function GetMapInitData(worldSize)
-	-- This function can reset map grid sizes or world wrap settings.
-	--
-	-- Skirmish is a world without oceans, so use grid sizes two levels below normal.
-	local worldsizes = {
-		[GameInfo.Worlds.WORLDSIZE_DUEL.ID] = {28, 18},
-		[GameInfo.Worlds.WORLDSIZE_TINY.ID] = {36, 22},
-		[GameInfo.Worlds.WORLDSIZE_SMALL.ID] = {46, 28},
-		[GameInfo.Worlds.WORLDSIZE_STANDARD.ID] = {60, 36},
-		[GameInfo.Worlds.WORLDSIZE_LARGE.ID] = {72, 44},
-		--[GameInfo.Worlds.WORLDSIZE_HUGE.ID] = {84, 52}
-		}
-	local grid_size = worldsizes[worldSize];
-	--
-	local world = GameInfo.Worlds[worldSize];
-	if(world ~= nil) then
-	return {
-		Width = grid_size[1],
-		Height = grid_size[2],
-		WrapX = false,
-	};      
-     end
+-- === BEGIN MOD: If Mini Beyond Earth is enabled, use map size from database instead of overriding map size ===
+function ModEnabledCheck(sModID)
+	for i,v in pairs(Modding.GetActivatedMods()) do
+		if sModID == v.ID then
+			return true;
+		end
+	end
+	return false;
 end
+local isMiniBeyondEarthModEnabled = ModEnabledCheck("9412c9bf-a7b2-481e-b42e-431f06aac221");
+if not isMiniBeyondEarthModEnabled then
+-- === END MOD ===
+	function GetMapInitData(worldSize)
+		-- This function can reset map grid sizes or world wrap settings.
+		--
+		-- Skirmish is a world without oceans, so use grid sizes two levels below normal.
+		local worldsizes = {
+			[GameInfo.Worlds.WORLDSIZE_DUEL.ID] = {28, 18},
+			[GameInfo.Worlds.WORLDSIZE_TINY.ID] = {36, 22},
+			[GameInfo.Worlds.WORLDSIZE_SMALL.ID] = {46, 28},
+			[GameInfo.Worlds.WORLDSIZE_STANDARD.ID] = {60, 36},
+			[GameInfo.Worlds.WORLDSIZE_LARGE.ID] = {72, 44},
+			--[GameInfo.Worlds.WORLDSIZE_HUGE.ID] = {84, 52}
+			}
+		local grid_size = worldsizes[worldSize];
+		--
+		local world = GameInfo.Worlds[worldSize];
+		if(world ~= nil) then
+		return {
+			Width = grid_size[1],
+			Height = grid_size[2],
+			WrapX = false,
+		};
+		end
+	end
+-- === BEGIN MOD ===
+end
+-- === END MOD ===
 -------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------

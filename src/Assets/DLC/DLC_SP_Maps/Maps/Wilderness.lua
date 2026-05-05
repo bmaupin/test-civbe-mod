@@ -63,9 +63,11 @@ function PangaeaFractalWorld:GeneratePlotTypes(args)
 	local iW, iH = Map.GetGridSize()
 	local fracFlags = {FRAC_POLAR = true};
 	
-	local sea_level_low = 62;
-	local sea_level_normal = 66;
-	local sea_level_high = 70;
+	-- === BEGIN MOD: Lower sea levels ===
+	local sea_level_low = 1;
+	local sea_level_normal = 1;
+	local sea_level_high = 1;
+	-- === END MOD ===
 	local world_age_old = 2;
 	local world_age_normal = 3;
 	local world_age_new = 5;

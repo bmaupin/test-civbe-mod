@@ -115,9 +115,11 @@ end
 function PangaeaFractalWorld:GeneratePlotTypes(args)
 	if(args == nil) then args = {}; end
 	
-	local sea_level_low = 59;
-	local sea_level_normal = 63;
-	local sea_level_high = 68;
+	-- === BEGIN MOD: Lower sea levels ===
+	local sea_level_low = 1;
+	local sea_level_normal = 1;
+	local sea_level_high = 1;
+	-- === END MOD ===
 	local world_age_old = 2;
 	local world_age_normal = 3;
 	local world_age_new = 5;
@@ -614,9 +616,11 @@ end
 function ContinentsFractalWorld:GeneratePlotTypes(args)
 	if(args == nil) then args = {}; end
 	
-	local sea_level_low = 63;
-	local sea_level_normal = 67;
-	local sea_level_high = 71;
+	-- === BEGIN MOD: Lower sea levels ===
+	local sea_level_low = 1;
+	local sea_level_normal = 1;
+	local sea_level_high = 1;
+	-- === END MOD ===
 	local world_age_old = 2;
 	local world_age_normal = 3;
 	local world_age_new = 5;
@@ -817,13 +821,13 @@ function GeneratePlotTypes()
 	end
 
 	-- Implement landmass type.
-	if userInputLandmass == 2 then -- Continents
-		local fractal_world = ContinentsFractalWorld.Create();
-		fractal_world:GeneratePlotTypes();
-		CreateSmallIslands(100);
-		GenerateCoasts();
+	-- if userInputLandmass == 2 then -- Continents
+	-- 	local fractal_world = ContinentsFractalWorld.Create();
+	-- 	fractal_world:GeneratePlotTypes();
+	-- 	CreateSmallIslands(100);
+	-- 	GenerateCoasts();
 		
-	elseif userInputLandmass == 3 then -- Small Continents
+	if userInputLandmass == 2 or userInputLandmass == 3 then -- Small Continents
 		local sea_level = Map.GetCustomOption(4)
 		if sea_level == 4 then
 			sea_level = 1 + Map.Rand(3, "Random Sea Level - Lua");
@@ -840,9 +844,11 @@ function GeneratePlotTypes()
 		local args = {
 			sea_level = sea_level,
 			world_age = world_age,
-			sea_level_low = 68,
-			sea_level_normal = 72,
-			sea_level_high = 75,
+			-- === BEGIN MOD: Lower sea levels ===
+			sea_level_low = 1,
+			sea_level_normal = 1,
+			sea_level_high = 1,
+			-- === END MOD ===
 			extra_mountains = 0,
 			adjust_plates = 1.35,
 			tectonic_islands = true
@@ -870,9 +876,11 @@ function GeneratePlotTypes()
 		local args = {
 			sea_level = sea,
 			world_age = age,
-			sea_level_low = 70,
-			sea_level_normal = 74,
-			sea_level_high = 78,
+			-- === BEGIN MOD: Lower sea levels ===
+			sea_level_low = 1,
+			sea_level_normal = 1,
+			sea_level_high = 1,
+			-- === END MOD ===
 			extra_mountains = 0,
 			adjust_plates = 1.6,
 			tectonic_islands = true

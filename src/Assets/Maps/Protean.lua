@@ -60,9 +60,11 @@ end
 function PangaeaFractalWorld:GeneratePlotTypes(args)
 	if(args == nil) then args = {}; end
 	
-	local sea_level_low = 59;
-	local sea_level_normal = 63;   -- Sea levels in BE have been lowered by 4% to 5% overall vs Civ5, to make room for Canyons and Wild Areas.
-	local sea_level_high = 68;
+	-- === BEGIN MOD: Lower sea levels ===
+	local sea_level_low = 1;
+	local sea_level_normal = 1;   -- Sea levels in BE have been lowered by 4% to 5% overall vs Civ5, to make room for Canyons and Wild Areas.
+	local sea_level_high = 1;
+	-- === END MOD ===
 	local world_age_old = 2;
 	local world_age_normal = 3;
 	local world_age_new = 5;

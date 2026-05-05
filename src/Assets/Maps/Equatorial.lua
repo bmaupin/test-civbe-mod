@@ -54,7 +54,7 @@ function MultilayeredFractal:GeneratePlotsByRegion()
 	-- This is where the rubber meets the road.
 	local args = {};
 	--
-	args.iWaterPercent = 60;
+	args.iWaterPercent = 0;
 	args.iRegionWidth = regiononeWidth;
 	args.iRegionHeight = regiononeHeight;
 	args.iRegionWestX = regiononeWestX;
@@ -82,7 +82,7 @@ function MultilayeredFractal:GeneratePlotsByRegion()
 	-- This is where the rubber meets the road.
 	local args = {};
 	--
-	args.iWaterPercent = 75;
+	args.iWaterPercent = 0;
 	args.iRegionWidth = regiontwoWidth;
 	args.iRegionHeight = regiontwoHeight;
 	args.iRegionWestX = regiontwoWestX;
@@ -110,7 +110,7 @@ function MultilayeredFractal:GeneratePlotsByRegion()
 	-- This is where the rubber meets the road.
 	local args = {};
 	--
-	args.iWaterPercent = 81;
+	args.iWaterPercent = 0;
 	args.iRegionWidth = regionthreeWidth;
 	args.iRegionHeight = regionthreeHeight;
 	args.iRegionWestX = regionthreeWestX;

@@ -48,9 +48,11 @@ function GeneratePlotTypes()
 	local args = {
 		sea_level = sea_level,
 		world_age = world_age,
-		sea_level_low = 65,
-		sea_level_normal = 70,   -- Sea levels in BE have been lowered by 4% to 5% overall vs Civ5, to make room for Canyons and Wild Areas.
-		sea_level_high = 75,
+		-- === BEGIN MOD: Lower sea levels ===
+		sea_level_low = 1,
+		sea_level_normal = 1,   -- Sea levels in BE have been lowered by 4% to 5% overall vs Civ5, to make room for Canyons and Wild Areas.
+		sea_level_high = 1,
+		-- === END MOD ===
 		extra_mountains = 3,
 		adjust_plates = 1.3,
 		tectonic_islands = true,

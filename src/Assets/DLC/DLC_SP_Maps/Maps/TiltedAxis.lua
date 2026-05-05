@@ -49,27 +49,42 @@ function GetMapScriptInfo()
 	}
 end
 ------------------------------------------------------------------------------
-function GetMapInitData(worldSize)
-	-- This function can reset map grid sizes or world wrap settings.
-	local worldsizes = {
-		[GameInfo.Worlds.WORLDSIZE_DUEL.ID] = {52, 32},
-		[GameInfo.Worlds.WORLDSIZE_TINY.ID] = {68, 44},
-		[GameInfo.Worlds.WORLDSIZE_SMALL.ID] = {88, 56},
-		[GameInfo.Worlds.WORLDSIZE_STANDARD.ID] = {108, 68},
-		[GameInfo.Worlds.WORLDSIZE_LARGE.ID] = {118, 74},
-		--[GameInfo.Worlds.WORLDSIZE_HUGE.ID] = {128, 80}
-		}
-	local grid_size = worldsizes[worldSize];
-	--
-	local world = GameInfo.Worlds[worldSize];
-	if(world ~= nil) then
-	return {
-		Width = grid_size[1],
-		Height = grid_size[2],
-		WrapX = true,
-	};      
-     end
+-- === BEGIN MOD: If Mini Beyond Earth is enabled, use map size from database instead of overriding map size ===
+function ModEnabledCheck(sModID)
+	for i,v in pairs(Modding.GetActivatedMods()) do
+		if sModID == v.ID then
+			return true;
+		end
+	end
+	return false;
 end
+local isMiniBeyondEarthModEnabled = ModEnabledCheck("9412c9bf-a7b2-481e-b42e-431f06aac221");
+if not isMiniBeyondEarthModEnabled then
+-- === END MOD ===
+	function GetMapInitData(worldSize)
+		-- This function can reset map grid sizes or world wrap settings.
+		local worldsizes = {
+			[GameInfo.Worlds.WORLDSIZE_DUEL.ID] = {52, 32},
+			[GameInfo.Worlds.WORLDSIZE_TINY.ID] = {68, 44},
+			[GameInfo.Worlds.WORLDSIZE_SMALL.ID] = {88, 56},
+			[GameInfo.Worlds.WORLDSIZE_STANDARD.ID] = {108, 68},
+			[GameInfo.Worlds.WORLDSIZE_LARGE.ID] = {118, 74},
+			--[GameInfo.Worlds.WORLDSIZE_HUGE.ID] = {128, 80}
+			}
+		local grid_size = worldsizes[worldSize];
+		--
+		local world = GameInfo.Worlds[worldSize];
+		if(world ~= nil) then
+		return {
+			Width = grid_size[1],
+			Height = grid_size[2],
+			WrapX = true,
+		};
+		end
+	end
+-- === BEGIN MOD ===
+end
+-- === END MOD ===
 ------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
@@ -120,9 +135,12 @@ end
 function PangaeaFractalWorld:GeneratePlotTypes(args)
 	if(args == nil) then args = {}; end
 	
-	local sea_level_low = 59;
-	local sea_level_normal = 63;
-	local sea_level_high = 68;
+	-- TODO: 0 causes crash, 5-10 is too much water, 1 works intermittently
+	-- === BEGIN MOD: Lower sea levels ===
+	local sea_level_low = 1;
+	local sea_level_normal = 1;
+	local sea_level_high = 1;
+	-- === END MOD ===
 	local world_age_old = 2;
 	local world_age_normal = 3;
 	local world_age_new = 5;
@@ -767,13 +785,13 @@ function GeneratePlotTypes()
 	end
 
 	-- Implement landmass type.
-	if userInputLandmass == 2 then -- Continents
-		local fractal_world = ContinentsFractalWorld.Create();
-		fractal_world:GeneratePlotTypes();
+	-- if userInputLandmass == 2 then -- Continents
+	-- 	local fractal_world = ContinentsFractalWorld.Create();
+	-- 	fractal_world:GeneratePlotTypes();
 	
-		GenerateCoasts();
+	-- 	GenerateCoasts();
 		
-	elseif userInputLandmass == 3 then -- Small Continents
+	if userInputLandmass == 2 or userInputLandmass == 3 then -- Small Continents
 		local sea_level = Map.GetCustomOption(3)
 		if sea_level == 3 then
 			sea_level = 1 + Map.Rand(2, "Random Sea Level - Lua");
@@ -790,9 +808,11 @@ function GeneratePlotTypes()
 		local args = {
 			sea_level = sea_level,
 			world_age = world_age,
-			sea_level_low = 64,
-			sea_level_normal = 70,
-			sea_level_high = 75,
+			-- === BEGIN MOD: Lower sea levels ===
+			sea_level_low = 1,
+			sea_level_normal = 1,
+			sea_level_high = 1,
+			-- === END MOD ===
 			extra_mountains = 2,
 			adjust_plates = 1.5,
 			tectonic_islands = true,

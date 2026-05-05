@@ -223,7 +223,8 @@ function SandstormFractalWorld:GeneratePlotTypes()
 	if landmass_type == 3 then
 		landmass_type = 1 + Map.Rand(2, "Random Landmass Type - Aridean Lua");
 	end
-	if landmass_type == 2 then
+	-- if landmass_type == 2 then
+	if false then
 		-- Produce Continents
 		local sea_level_low = 63;
 		local sea_level_normal = 67;
@@ -416,9 +417,11 @@ function SandstormFractalWorld:GeneratePlotTypes()
 
 	else
 		-- Produce Pangaea
-		local sea_level_low = 59;
-		local sea_level_normal = 63;
-		local sea_level_high = 68;
+		-- === BEGIN MOD: Lower sea levels ===
+		local sea_level_low = 1;
+		local sea_level_normal = 1;
+		local sea_level_high = 1;
+		-- === END MOD ===
 		local world_age_old = 2;
 		local world_age_normal = 3;
 		local world_age_new = 5;
