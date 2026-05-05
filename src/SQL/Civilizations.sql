@@ -62,6 +62,12 @@ WHERE Type = 'CIVILIZATION_FRANCO_IBERIA'
   OR Type = 'CIVILIZATION_RUSSIA';
 
 
+-- Disable planetary survey for all civs; it only has water-related features
+INSERT INTO Civilization_DisableTechs (CivilizationType, TechType)
+SELECT Civilizations.Type, 'TECH_PLANETARY_SURVEY'
+FROM Civilizations
+WHERE Civilizations.Playable = 1;
+
 
 -- Prevent non-alien factions from researching harmony techs
 INSERT INTO Civilization_DisableTechs (CivilizationType, TechType)
